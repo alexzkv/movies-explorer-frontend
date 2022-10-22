@@ -1,0 +1,9 @@
+.promo {
+  color: #000;
+}
+
+.promo__title {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+}
