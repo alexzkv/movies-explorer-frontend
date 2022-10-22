@@ -1,9 +1,34 @@
 .promo {
-  color: #000;
+  display: flex;
+  padding: 0 70px;
+  
+  background-color: #DDDEE3;
+}
+
+.promo__info {
+  margin-right: 190px;
 }
 
 .promo__title {
+  max-width: 640px;
+  margin-bottom: 37px;
+
   font-weight: 400;
   font-size: 50px;
   line-height: 1.16;
+}
+
+.promo__subtitle {
+  max-width: 310px;
+
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.23;
+
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+
+.promo__img {
+  max-width: 310px;
 }
