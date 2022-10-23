@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 70px;
+
+  background-color: #DDDEE3;
+}
+
+@media screen and (max-width: 1023px) {
+  .header {
+    padding: 18px 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 18px 14px;
+  }
+}
