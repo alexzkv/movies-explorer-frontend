@@ -1,9 +1,11 @@
+import AboutProject from '../AboutProject/AboutProject';
 import Promo from "../Promo/Promo";
 
 export default function Main() {
   return (
     <main>
-      <Promo/>
+      <Promo />
+      <AboutProject />
     </main>
   )
 }
