@@ -19,3 +19,20 @@ body {
   text-rendering: optimizeLegibility;
   background-color: #fff;
 }
+
+.section__title {
+  padding-bottom: 23px;
+  border-bottom: 1px solid #000;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.22;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 767px) {
+  .section__title {
+    padding-bottom: 28px;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+}
