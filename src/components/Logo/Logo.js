@@ -8,5 +8,5 @@ export default function Logo() {
     <Link to='/' className='logo'>
       <img src={ LogoCircle } alt='синий круг' />
     </Link>
-  )
+  );
 }

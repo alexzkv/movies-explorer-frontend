@@ -1,4 +1,4 @@
-import './Portfolio.css'
+import './Portfolio.css';
 
 export default function Portfolio() {
   return (
@@ -40,5 +40,5 @@ export default function Portfolio() {
         </li>
       </ul>
     </section>
-  )
+  );
 }

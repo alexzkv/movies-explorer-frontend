@@ -1,13 +1,19 @@
-import Header from '../Header/Header';
+import { Routes, Route } from 'react-router-dom';
+
 import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
+import Movies from '../Movies/Movies';
 
 export default function App() {
   return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
-  )
+    <Routes>
+      <Route 
+        path='/'
+        element={ <Main /> }
+      />
+      <Route 
+        path='/movies'
+        element={ <Movies /> }
+      />
+    </Routes>
+  );
 }
