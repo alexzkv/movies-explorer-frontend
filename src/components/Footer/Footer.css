@@ -1,5 +1,5 @@
 .footer {
-  padding: 70px 70px 20px;
+  padding: 79px 70px 20px;
   font-weight: 400;
   font-size: 13px;
   line-height: 1.23;
@@ -37,7 +37,7 @@
 
 @media screen and (max-width: 1023px) {
   .footer {
-    padding: 69px 30px 20px;
+    padding: 79px 30px 20px;
   }
 }
 

@@ -9,9 +9,10 @@ export default function Movies() {
   return (
     <>
       <Header />
-      <main>
+      <main className='movies'>
         <SearchForm />
         <MoviesCardList />
+        <button type='button' className='movies__more'>Ещё</button>
       </main>
       <Footer />
     </>

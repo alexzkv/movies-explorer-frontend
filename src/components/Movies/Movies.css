@@ -1,0 +1,33 @@
+.movies__more {
+  /* display: flex;
+  align-items: center;
+  text-align: center; */
+  margin: 50px 70px 80px;
+  padding: 11px 0 9px;
+  width: 1140px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  background-color: #F4F4F4;
+  cursor: pointer;
+}
+
+.movies__more:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 1023px) {
+  .movies__more {
+    margin: 50px 30px 80px;
+    width: 708px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movies__more {
+    margin: 50px 10px 80px;
+    width: 300px;
+  }
+}
