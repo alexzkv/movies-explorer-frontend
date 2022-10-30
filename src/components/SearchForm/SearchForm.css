@@ -43,6 +43,7 @@
   line-height: 1.29;
   background-color: #3456F3;
   color: #FFF;
+  cursor: pointer;
 }
 
 .search__btn:hover {
@@ -61,4 +62,46 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 1.38;
+}
+
+@media screen and (max-width: 1023px) {
+  .search {
+    padding: 70px 30px 10px;
+  }
+  
+  .search__form {
+    padding-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search {
+    padding: 70px 14px 10px;
+  }
+  
+  .search__form {
+    padding-bottom: 63px;
+  }
+
+  .search__input-box {
+    margin-bottom: 30px;
+  }
+
+  .search__input {
+    padding: 17px 0 17px 10px;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .search__btn {
+    margin-right: 6px;
+    padding: 13px 10px;
+    width: 80px;
+  }
+
+  .search__checkbox-label {
+    margin-left: 13px;
+    font-size: 11px;
+    line-height: 1.64;
+  }
 }
