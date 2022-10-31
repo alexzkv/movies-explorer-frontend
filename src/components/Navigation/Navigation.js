@@ -1,25 +1,30 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import './Navigation.css';
-// import icon from '../../images/accaunt-icon.svg'
 
-export default function Navigation() {
+export default function Navigation({ place }) {
   return (
-    <>
     <nav className='navigation'>
-      <NavLink to='/signup' className='navigation__link navigation__link_active'>Регистрация</NavLink>
-      <NavLink to='/signin' className='navigation__link'>Войти</NavLink>
-      {/* <Routes>
-        <NavLink to='/movies' className="navigation__link">Фильмы</NavLink>
-        <NavLink to='/saved-movies' className="navigation__link">Сохранённые фильмы</NavLink>
-        <NavLink to='/profile'className="navigation__btn">
-          <button>
+      <ul className={`navigation__list navigation__list_place_${place}`}>
+        <li className='navigation__list-item'>
+          <NavLink 
+            to='/movies'
+            className='navigation__link navigation__link_active'
+          >Фильмы</NavLink>
+        </li>
+        <li className='navigation__list-item'>
+          <NavLink
+            to='/saved-movies'
+            className='navigation__link'
+          >Сохранённые фильмы</NavLink>
+        </li>
+        <li className='navigation__list-item'>
+          <Link to='/profile' className='navigation__account'>
             Аккаунт
-            <img src={ icon } alt='иконка аватара' className='navigation__img'/>
-          </button>
-        </NavLink>
-      </Routes> */}
+            <span className='navigation__icon'/>
+          </Link>
+        </li>
+      </ul>
     </nav>
-    </>
   );
 }

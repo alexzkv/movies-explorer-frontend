@@ -1,7 +1,8 @@
+.movies {
+  background-color: #FAFAFA;
+}
+
 .movies__more {
-  /* display: flex;
-  align-items: center;
-  text-align: center; */
   margin: 50px 70px 80px;
   padding: 11px 0 9px;
   width: 1140px;

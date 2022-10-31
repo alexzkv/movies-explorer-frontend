@@ -12,7 +12,7 @@ export default function App() {
       />
       <Route 
         path='/movies'
-        element={ <Movies /> }
+        element={ <Movies loggedIn={'loggedIn'} /> }
       />
     </Routes>
   );

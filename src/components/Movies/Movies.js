@@ -5,10 +5,10 @@ import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-export default function Movies() {
+export default function Movies({ loggedIn }) {
   return (
     <>
-      <Header />
+      <Header place='movies' loggedIn={loggedIn}/>
       <main className='movies'>
         <SearchForm />
         <MoviesCardList />

@@ -2,7 +2,40 @@
   display: flex;
   justify-content: space-between;
   padding: 18px 70px;
+}
+
+.header_place_main {
   background-color: #DDDEE3;
+}
+
+.header_place_profile {
+  background-color: #FAFAFA;
+}
+
+.header__box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__link {
+  padding: 15px 20px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33px;
+  color: #fff;
+  background: #3456F3;
+}
+
+.header__link:hover {
+  opacity: .8;
+}
+
+.header__link_active {
+  background: transparent;
+  color: #000;
 }
 
 @media screen and (max-width: 1023px) {
@@ -14,5 +47,15 @@
 @media screen and (max-width: 767px) {
   .header {
     padding: 18px 14px;
+  }
+
+  .header__box {
+    gap: 3px;
+  }
+
+  .header__link {
+    padding: 5px 12px;
+    font-size: 10px;
+    line-height: 1.6;
   }
 }
