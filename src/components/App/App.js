@@ -4,8 +4,9 @@ import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import NotFound from '../NotFound/NotFound';
 import Profile from '../Profile/Profile';
-import Register from '../Register/Register';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
 
 export default function App() {
   return (
@@ -30,7 +31,15 @@ export default function App() {
         exact path='/signup'
         element={ 
           <Register 
-            registerError={'registerError'}
+            signError={'signError'}
+          /> 
+        }
+      />
+      <Route 
+        exact path='/signin'
+        element={ 
+          <Login 
+            signError={'signError'}
           /> 
         }
       />
