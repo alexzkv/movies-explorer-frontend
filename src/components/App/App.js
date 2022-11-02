@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import NotFound from '../NotFound/NotFound';
+import Profile from '../Profile/Profile';
 import SavedMovies from '../SavedMovies/SavedMovies';
 
 export default function App() {
@@ -19,6 +20,10 @@ export default function App() {
       <Route 
         exact path='/saved-movies'
         element={ <SavedMovies loggedIn={'loggedIn'} /> }
+      />
+      <Route 
+        exact path='/profile'
+        element={ <Profile loggedIn={'loggedIn'} /> }
       />
       <Route 
         path='/'
