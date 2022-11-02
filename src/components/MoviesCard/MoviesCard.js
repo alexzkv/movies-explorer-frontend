@@ -4,11 +4,7 @@ import CardImg from '../../images/pics/pic.png';
 
 export default function MoviesCard() {
   return (
-    <a 
-      href='/trailerLink' 
-      target='_blank'
-      rel='noreferrer'
-      className='card'
+    <article className='card'
     >
       <button type='button' className='card__btn'>Сохранить</button>
       {/* <button type='button' className='card__btn card__btn_type_save' /> */}
@@ -21,6 +17,6 @@ export default function MoviesCard() {
         <h2 className='card__title'>33 слова о дизайне</h2>
         <p className='card__duration'>1ч 17м</p>
       </div>
-    </a>
+    </article>
   );
 }
