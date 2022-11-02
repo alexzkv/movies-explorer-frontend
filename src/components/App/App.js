@@ -4,6 +4,7 @@ import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import NotFound from '../NotFound/NotFound';
 import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
 import SavedMovies from '../SavedMovies/SavedMovies';
 
 export default function App() {
@@ -24,6 +25,14 @@ export default function App() {
       <Route 
         exact path='/profile'
         element={ <Profile loggedIn={'loggedIn'} /> }
+      />
+      <Route 
+        exact path='/signup'
+        element={ 
+          <Register 
+            registerError={'registerError'}
+          /> 
+        }
       />
       <Route 
         path='/'
