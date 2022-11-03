@@ -1,5 +1,6 @@
 .navigation {
   display: flex;
+  /* justify-content: flex-end; */
 }
 
 .navigation__list {
@@ -9,7 +10,12 @@
   list-style-type: none;
 }
 
+/* .navigation__list_place_main {
+  display: none;
+} */
+
 .navigation__list-item:hover {
+  display: flex;
   opacity: .7;
 }
 
@@ -17,8 +23,8 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
-  text-decoration: none;
   color: #000;
+  text-decoration: none;
 }
 
 .navigation__link_active {
@@ -35,8 +41,8 @@
   font-weight: 500;
   font-size: 13px;
   line-height: .92;
-  text-decoration: none;
   color: #000;
+  text-decoration: none;
   box-shadow: 0px 3px 14px rgba(0, 0, 0, .08);
 }
 
@@ -45,6 +51,39 @@
   height: 10.5px;
   width: 10.5px;
   border-radius: 50px;
-  background: no-repeat center url(../../images/accaunt-icon.svg);
-  background-color: #F4F4F4;
+  background: #F4F4F4 no-repeat center url(../../images/accaunt-icon.svg);
+}
+
+.navigation__menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: no-repeat center url(../../images/burger-icon.svg);
+  cursor: pointer;
+}
+
+.navigation__menu-btn:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 1023px) {
+  .navigation__list {
+    display: none;
+  }
+
+  .navigation__link_active {
+    text-decoration: underline;
+  }
+  
+  .navigation__menu-btn {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navigation__menu-btn {
+    width: 40px;
+    height: 43px;
+  }
 }

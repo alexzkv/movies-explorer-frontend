@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './Header.css';
@@ -6,6 +7,16 @@ import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 
 export default function Header({ place, loggedIn }) {
+  const [isMenuOpen, setisMenuOpen] = useState(false);
+
+  function openMenu() {
+    setisMenuOpen(true);
+  }
+
+  function closeMenu() {
+    setisMenuOpen(false);
+  }
+
   let headerPlace;
 
   switch (place) {
@@ -34,7 +45,11 @@ export default function Header({ place, loggedIn }) {
           </div>
          )
         : (
-          <Navigation />
+            <Navigation
+              isMenuOpen={isMenuOpen}
+              onMenuOpen={openMenu}
+              onMenuClose={closeMenu}
+            />
           )
       }
     </header>
