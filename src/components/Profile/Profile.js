@@ -7,7 +7,7 @@ export default function Profile({ loggedIn }) {
     <>
       <Header place='profile' loggedIn={loggedIn}/>
       <main className='profile'>
-        <h1 className='profile__title'>Привет, Виталий</h1>
+        <h1 className='profile__title'>Привет, Александр</h1>
         <div className='profile__data'>
           <p className='profile__label'>Имя</p>
           <p className='profile__value'>Александр</p>
@@ -26,5 +26,5 @@ export default function Profile({ loggedIn }) {
         >Выйти из аккаунта</button>
       </main>
     </>
-  )
+  );
 }

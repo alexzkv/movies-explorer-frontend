@@ -1,6 +1,5 @@
 .navigation {
   display: flex;
-  /* justify-content: flex-end; */
 }
 
 .navigation__list {
@@ -10,9 +9,9 @@
   list-style-type: none;
 }
 
-/* .navigation__list_place_main {
+.navigation__list_place_main {
   display: none;
-} */
+}
 
 .navigation__list-item:hover {
   display: flex;
