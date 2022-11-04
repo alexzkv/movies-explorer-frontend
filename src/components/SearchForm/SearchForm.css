@@ -23,12 +23,15 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.11;
-  color: #000;
   outline: 0;
 }
 
 .search__input::placeholder {
   color: #A0A0A0;
+}
+
+.search__input:focus {
+  outline: rgba(170, 170, 170, .2) solid;
 }
 
 .search__btn {
