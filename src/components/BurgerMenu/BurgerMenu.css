@@ -59,16 +59,12 @@
   text-decoration: none;
 }
 
-.menu__link_active {
-  position: relative;
+.menu__link:hover {
+  opacity: .7;
 }
 
-.menu__link_active::after {
-  content: '';
-  position: absolute;
-  left: 1px;
-  bottom: -4px;
-  width: 100%;
+.active {
+  padding-bottom: 4px;
   border-bottom: 2px solid #000;
 }
 
@@ -118,13 +114,17 @@
   .menu__close {
     margin: 18px 18px 0 auto;
   }
+
+  .menu__list {
+    margin-top: 105px;
+  }
   
   .menu__list-item {
     margin-bottom: 24px;
   }
 
-  .menu__link_active::after {
-    bottom: -7px;
+  .active {
+    padding-bottom: 7px;
   }
   
   .menu__account {

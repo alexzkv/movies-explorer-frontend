@@ -14,7 +14,7 @@ export default function BurgerMenu({ isVisible, onClose }) {
         <menu className='menu__list'>
           <li className='menu__list-item'>
             <NavLink
-              to='/'
+              end to='/'
               className='menu__link'
               onClick={onClose}
             >Главная
@@ -23,7 +23,7 @@ export default function BurgerMenu({ isVisible, onClose }) {
           <li className='menu__list-item'>
             <NavLink
               to='/movies'
-              className='menu__link menu__link_active'
+              className='menu__link'
               onClick={onClose}
             >Фильмы
             </NavLink>

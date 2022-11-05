@@ -4,15 +4,15 @@ import './Navigation.css';
 
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-export default function Navigation({ isMenuOpen, onMenuOpen, onMenuClose }) {
+export default function Navigation({ place, isMenuOpen, onMenuOpen, onMenuClose }) {
   return (
     <>
       <nav className='navigation'>
         <ul className='navigation__list'>
           <li className='navigation__list-item'>
-            <NavLink 
+            <NavLink
               to='/movies'
-              className='navigation__link navigation__link_active'
+              className='navigation__link'
             >Фильмы</NavLink>
           </li>
           <li className='navigation__list-item'>
