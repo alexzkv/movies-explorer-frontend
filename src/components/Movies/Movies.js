@@ -1,5 +1,3 @@
-import './Movies.css';
-
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
@@ -10,8 +8,11 @@ export default function Movies({ loggedIn }) {
     <>
       <Header place='movies' loggedIn={loggedIn}/>
       <main>
-        <SearchForm />
-        <MoviesCardList />
+        <SearchForm  place='movies' />
+        <MoviesCardList
+          place='movies'
+          isSavedMoviesPage={false}
+        />
       </main>
       <Footer />
     </>

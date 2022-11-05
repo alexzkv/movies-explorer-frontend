@@ -40,6 +40,10 @@
 }
 
 .card__btn_type_save {
+  background: #F4F4F4;
+}
+
+.card__btn_type_active {
   margin-left: 51px;
   height: 21px;
   width: 21px;

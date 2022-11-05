@@ -6,10 +6,13 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 export default function SavedMovies({ loggedIn }) {
   return (
     <>
-      <Header place='movies' loggedIn={loggedIn}/>
-      <main className='saved-movies'>
-        <SearchForm />
-        <MoviesCardList />
+      <Header place='saved-movies' loggedIn={loggedIn}/>
+      <main>
+        <SearchForm place='saved-movies' />
+        <MoviesCardList
+          place='saved-movies'
+          isSavedMoviesPage={true}
+        />
       </main>
       <Footer />
     </>

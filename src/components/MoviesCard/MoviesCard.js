@@ -1,17 +1,25 @@
+import { useState } from 'react';
+
 import './MoviesCard.css';
 
-import CardImg from '../../images/pics/pic.png';
+export default function MoviesCard({ movie, isSavedMoviesPage, savedMovies }) {
+  const [savedMovie, setSavedMovie] = useState(null);
 
-export default function MoviesCard() {
   return (
     <article className='card'
     >
-      <button type='button' className='card__btn'>Сохранить</button>
-      {/* <button type='button' className='card__btn card__btn_type_save' /> */}
-      {/* <button type='button' className='card__btn card__btn_type_remove' /> */}
+      { !isSavedMoviesPage
+        ? <button
+            type='button'
+            className={`card__btn card__btn_type_save ${savedMovie && 'card__btn_type_active'} `}
+          >
+            {!savedMovie && 'Сохранить'}
+          </button>
+        : <button type='button' className='card__btn card__btn_type_remove' />
+      }
       <img 
         alt='Иллюстрация к фильму'
-        src={CardImg}
+        src={movie}
         className='card__img' />
       <div className='card__box'>
         <h2 className='card__title'>33 слова о дизайне</h2>
