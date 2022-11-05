@@ -19,13 +19,13 @@
   display: flex;
   flex-direction: column;
   width: 40%;
-  padding: 27px 27px 0 0;
+  height: 100%;
   background-color: #FAFAFA;
 }
 
 .menu__close {
   display: block;
-  margin: 0 0 0 auto;
+  margin: 27px 27px 0 auto;
   width: 22px;
   height: 22px;
   border: none;
@@ -75,7 +75,7 @@
 .menu__account {
   display: flex;
   align-items: center;
-  margin: 627px auto 90px;
+  margin: auto auto 90px;
   padding: 3px 3px 3px 11px;
   gap: 9px;
   border-radius: 40px;
@@ -98,22 +98,25 @@
 
 @media screen and (max-width: 799px) {
   .menu {
-    width: 66%;
+    width: 68%;
   }
 
   .menu-box__disappear {
-    width: 34%;
+    width: 32%;
   }
 }
 
 @media screen and (max-width: 399px) {
   .menu {
     width: 100%;
-    padding: 18px 18px 0 0;
   }
 
   .menu-box__disappear {
     display: none;
+  }
+
+  .menu__close {
+    margin: 18px 18px 0 auto;
   }
   
   .menu__list-item {
@@ -125,6 +128,6 @@
   }
   
   .menu__account {
-    margin: 444px auto 46px;
+    margin: auto auto 46px;
   }
 }
