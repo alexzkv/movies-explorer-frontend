@@ -12,23 +12,23 @@ export default function App() {
   return (
     <Routes>
       <Route 
-        exact path='/'
+        path='/'
         element={ <Main /> }
       />
       <Route 
-        exact path='/movies'
+        path='/movies'
         element={ <Movies loggedIn={'loggedIn'} /> }
       />
       <Route 
-        exact path='/saved-movies'
+        path='/saved-movies'
         element={ <SavedMovies loggedIn={'loggedIn'} /> }
       />
       <Route 
-        exact path='/profile'
+        path='/profile'
         element={ <Profile loggedIn={'loggedIn'} /> }
       />
       <Route 
-        exact path='/signup'
+        path='/signup'
         element={ 
           <Register 
             signError={'signError'}
@@ -36,7 +36,7 @@ export default function App() {
         }
       />
       <Route 
-        exact path='/signin'
+        path='/signin'
         element={ 
           <Login 
             signError={'signError'}

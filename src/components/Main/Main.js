@@ -6,7 +6,7 @@ import Portfolio from '../Portfolio/Portfolio';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-export default function Main({loggedIn}) {
+export default function Main() {
   return (
     <>
       <Header place='main' />

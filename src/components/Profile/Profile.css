@@ -60,7 +60,7 @@
   color: #EE3465;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 799px) {
   .profile {
     padding: 220px 0 269px;
   }
@@ -74,7 +74,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 399px) {
   .profile {
     padding: 55px 0 40px;
     max-width: 260px;

@@ -14,7 +14,7 @@ export default function BurgerMenu({ isVisible, onClose }) {
         <menu className='menu__list'>
           <li className='menu__list-item'>
             <NavLink
-              exact to='/'
+              to='/'
               className='menu__link'
               onClick={onClose}
             >Главная

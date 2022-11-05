@@ -53,7 +53,7 @@
   color: #A0A0A0;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 799px) {
   .about-project {
     padding: 90px 50px;
   }
@@ -80,7 +80,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 399px) {
   .about-project {
     padding: 70px 18px;
   }

@@ -1,5 +1,6 @@
 .search {
   padding: 70px 70px 10px;
+  max-width: 1140px;
 }
 
 .search__form {
@@ -67,21 +68,23 @@
   line-height: 1.38;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 799px) {
   .search {
     padding: 70px 30px 10px;
+    max-width: 708px;
   }
-  
+
   .search__form {
     padding-bottom: 50px;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 399px) {
   .search {
     padding: 70px 14px 10px;
+    max-width: 300px;
   }
-  
+
   .search__form {
     padding-bottom: 63px;
   }

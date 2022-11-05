@@ -9,10 +9,9 @@ export default function Movies({ loggedIn }) {
   return (
     <>
       <Header place='movies' loggedIn={loggedIn}/>
-      <main className='movies'>
+      <main>
         <SearchForm />
         <MoviesCardList />
-        <button type='button' className='movies__more'>Ещё</button>
       </main>
       <Footer />
     </>

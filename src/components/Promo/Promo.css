@@ -45,7 +45,7 @@
   opacity: .8;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 799px) {
   .promo {
     flex-direction: column-reverse;
     align-items: center;
@@ -70,7 +70,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 399px) {
   .promo {
     padding: 70px 0 0;
   }

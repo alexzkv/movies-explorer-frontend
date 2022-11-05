@@ -35,13 +35,13 @@
   color: #EE3465;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 799px) {
   .sign {
     margin: 232px auto;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 399px) {
   .sign {
     display: flex;
     flex-direction: column;

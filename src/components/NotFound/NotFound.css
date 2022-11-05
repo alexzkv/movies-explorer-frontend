@@ -27,13 +27,13 @@
   color: #3456F3;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 799px) {
   .not-found__code {
     margin-top: 408px;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 399px) {
   .not-found__code {
     margin-top: 329px;
     font-size: 80px;
