@@ -9,8 +9,8 @@ export default function MoviesCardList({ place, isSavedMoviesPage }) {
   return (
     <>
       {(place === 'movies') && <ul className='movies-list'>
-        {movieImages.map((item) => (
-          <li key={item._id}>
+        {movieImages.map((item, index) => (
+          <li key={index}>
             <MoviesCard
               movie={item}
               isSavedMoviesPage={isSavedMoviesPage}
@@ -19,8 +19,8 @@ export default function MoviesCardList({ place, isSavedMoviesPage }) {
         ))}
       </ul>}
       {(place === 'saved-movies') && <ul className='movies-list'>
-        {savedMovieImages.map((item) => (
-          <li key={item._id}>
+        {savedMovieImages.map((item, index) => (
+          <li key={index}>
             <MoviesCard
               movie={item}
               isSavedMoviesPage={isSavedMoviesPage}
