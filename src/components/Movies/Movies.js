@@ -1,18 +1,29 @@
+import { useState } from 'react';
+
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Preloader from '../Preloader/Preloader';
 
 export default function Movies({ loggedIn }) {
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <>
       <Header place='movies' loggedIn={loggedIn}/>
       <main>
-        <SearchForm  place='movies' />
-        <MoviesCardList
+        <SearchForm
           place='movies'
-          isSavedMoviesPage={false}
+          setIsLoading={setIsLoading}
         />
+        {isLoading && <Preloader />}
+        { !isLoading &&
+          <MoviesCardList
+            place='movies'
+            isSavedMoviesPage={false}
+          />
+        } 
       </main>
       <Footer />
     </>
