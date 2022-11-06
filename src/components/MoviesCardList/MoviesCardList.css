@@ -25,6 +25,7 @@
   line-height: 1.25;
   background-color: #F4F4F4;
   cursor: pointer;
+  transition: all .5s ease;
 }
 
 .movies__more:hover {

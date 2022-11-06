@@ -43,6 +43,7 @@
   font-size: 14px;
   line-height: 1.21;
   color: #000;
+  transition: all .5s ease;
 }
 
 .about-me__social-network:hover {

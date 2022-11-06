@@ -48,6 +48,7 @@
   background-color: #3456F3;
   color: #FFF;
   cursor: pointer;
+  transition: all .5s ease;
 }
 
 .search__btn:hover {

@@ -48,6 +48,7 @@
   line-height: 1.23;
   background-color: transparent;
   cursor: pointer;
+  transition: all .5s ease;
 }
 
 .profile__btn:hover {

@@ -33,6 +33,7 @@
   color: #000;
   visibility: hidden;
   cursor: pointer;
+  transition: all .5s ease;
 }
 
 .card__btn:hover {

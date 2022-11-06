@@ -31,6 +31,7 @@
   text-decoration: none;
   text-align: right;
   color: #000;
+  transition: all .5s ease;
 }
 
 .footer__link:hover {

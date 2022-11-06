@@ -30,6 +30,8 @@
   line-height: 1.21;
   color: #FFF;
   background-color: #3456F3;
+  cursor: pointer;
+  transition: all .5s ease;
 }
 
 .form__submit:hover {
@@ -48,6 +50,11 @@
 .form__text_link {
   color: #3456F3;
   text-decoration: none;
+  transition: all .5s ease;
+}
+
+.form__text_link:hover {
+  opacity: .8;
 }
 
 @media screen and (max-width: 767px) {

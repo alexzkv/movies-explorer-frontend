@@ -35,6 +35,7 @@
   line-height: 1.33px;
   color: #fff;
   background: #3456F3;
+  transition: all .5s ease;
 }
 
 .header__link:hover {

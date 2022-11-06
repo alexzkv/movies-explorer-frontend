@@ -27,6 +27,11 @@
   height: 304px;
 }
 
+.promo__img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
 .promo__link {
   display: inline-block;
   margin-bottom: 75px;
@@ -39,6 +44,7 @@
   font-size: 12px;
   line-height: 1.33;
   color: #000;
+  transition: all .5s ease;
 }
 
 .promo__link:hover {
