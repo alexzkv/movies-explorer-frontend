@@ -1,0 +1,123 @@
+.about-project {
+  padding: 110px 70px;
+  background-color: #FAFAFA;
+}
+
+.about-project__grid {
+  display: grid;
+  margin-top: 69px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.about-project__subtitle{
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+.about-project__description {
+  margin-top: 26px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+}
+
+.about-project__box {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin-top: 110px;
+}
+
+.about-project__period {
+  padding: 9px 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  background-color: #F2F2F2;
+}
+
+.about-project__period_accent {
+  color: #FFF;
+  background-color: #3456F3;
+}
+
+.about-project__direction {
+  margin-top: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  color: #A0A0A0;
+}
+
+@media screen and (max-width: 799px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__grid {
+    display: grid;
+    margin-top: 69px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .about-project__description {
+    margin-top: 22px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .about-project__box {
+    margin-top: 94px;
+  }
+
+  .about-project__period {
+    min-width: 140px;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .about-project {
+    padding: 70px 18px;
+  }
+  
+  .about-project__grid {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .about-project__subtitle {
+    margin-top: 60px;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+  .about-project__description {
+    margin-top: 16px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-project__box {
+    margin-top: 57px;
+  }
+
+  .about-project__period {
+    min-width: 100px;
+    padding: 11px 0;
+    font-size: 11px;
+    line-height: 1.18;
+  }
+
+  .about-project__direction {
+    margin-top: 10px;
+    font-size: 11px;
+    line-height: 1.18;
+  }
+}

@@ -1,0 +1,147 @@
+.menu-box {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+.menu-box_visible {
+  display: flex;
+}
+
+.menu-box__disappear {
+  width: 60%;
+  background-color: #000;
+  opacity: .3;
+}
+
+.menu {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+  background-color: #FAFAFA;
+}
+
+.menu__close {
+  display: block;
+  margin: 27px 27px 0 auto;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: no-repeat url(../../images/remove-btn.svg);
+  background-size: contain;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.menu__close:hover {
+  opacity: .8;
+} 
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 110px;
+  list-style-type: none;
+}
+
+.menu__list-item {
+  display: block;
+  margin-bottom: 28px;
+}
+
+.menu__list-item:last-of-type {
+  margin-bottom: 0;
+}
+
+.menu__link {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  color: #000;
+  text-decoration: none;
+  transition: all .5s ease;
+}
+
+.menu__link:hover {
+  opacity: .7;
+}
+
+.menu__account {
+  display: flex;
+  align-items: center;
+  margin: auto auto 90px;
+  padding: 3px 3px 3px 11px;
+  gap: 9px;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: .92;
+  color: #000;
+  text-decoration: none;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, .08);
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.menu__account:hover {
+  transform: scale(1.1);
+  opacity: .7;
+}
+
+.menu__icon {
+  padding: 7px 7px;
+  height: 10.5px;
+  width: 10.5px;
+  border-radius: 50px;
+  border: none;
+  background: #F4F4F4 no-repeat center url(../../images/accaunt-icon.svg);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 799px) {
+  .menu {
+    width: 68%;
+  }
+
+  .menu-box__disappear {
+    width: 32%;
+  }
+  
+  .active {
+    padding-bottom: 4px;
+    border-bottom: 2px solid #000;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .menu {
+    width: 100%;
+  }
+
+  .menu-box__disappear {
+    display: none;
+  }
+
+  .menu__close {
+    margin: 18px 18px 0 auto;
+  }
+
+  .menu__list {
+    margin-top: 105px;
+  }
+  
+  .menu__list-item {
+    margin-bottom: 24px;
+  }
+
+  .active {
+    padding-bottom: 7px;
+  }
+  
+  .menu__account {
+    margin: auto auto 46px;
+  }
+}
