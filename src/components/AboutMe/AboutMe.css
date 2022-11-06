@@ -90,11 +90,7 @@
   }
 }
 
-@media screen and (max-width: 399px) {
-  .about-me {
-    padding: 70px 14px;
-  }
-
+@media screen and (max-width: 555px) {
   .about-me__box {
     flex-direction: column-reverse;
     margin-top: 60px;
@@ -121,7 +117,13 @@
   }
 
   .about-me__photo {
-    width: 292px;
+    width: 275px;
     height: 352px;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .about-me {
+    padding: 70px 14px;
   }
 }

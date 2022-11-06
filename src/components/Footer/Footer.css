@@ -38,17 +38,15 @@
   opacity: .7;
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 768px) {
   .footer {
     padding: 79px 30px 20px;
-    max-width: 708px;
   }
 }
 
 @media screen and (max-width: 399px) {
   .footer {
     padding: 79px 10px 10px;
-    max-width: 300px;
     font-size: 12px;
     line-height: 1.25;
   }
