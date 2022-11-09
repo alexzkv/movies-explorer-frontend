@@ -2,7 +2,7 @@ import './SearchForm.css';
 
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
-export default function SearchForm() {
+export default function SearchForm({ place }) {
   return (
     <section className='search'>
       <form className='search__form'>

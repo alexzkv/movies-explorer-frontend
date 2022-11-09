@@ -20,18 +20,19 @@ export default function Header({ place, loggedIn }) {
   let headerPlace;
 
   switch (place) {
-      case 'main': {
-          headerPlace = 'header_place_main';
-          break;
-      }
-      case 'profile': {
-          headerPlace = 'header_place_profile';
-          break;
-      }
-      default: {
-          headerPlace = '';
-      }
+    case 'main': {
+      headerPlace = 'header_place_main';
+      break;
+    }
+    case 'profile': {
+      headerPlace = 'header_place_profile';
+      break;
+    }
+    default: {
+      headerPlace = '';
+    }
   }
+  
   return (
     <header className={`header ${headerPlace}`}>
       <Logo />
@@ -39,7 +40,7 @@ export default function Header({ place, loggedIn }) {
         ? (
           <div className='header__box'>
             <NavLink to='/signup'className='header__link header__link_active'>
-                Регистрация
+              Регистрация
             </NavLink>
             <NavLink to='/signin' className='header__link'>Войти</NavLink>
           </div>

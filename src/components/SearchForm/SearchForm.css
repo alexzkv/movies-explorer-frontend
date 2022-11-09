@@ -8,6 +8,22 @@
   border-bottom: 1px solid rgba(170, 170, 170, .2);
 }
 
+.search__error {
+  position: absolute;
+  top: 15px;
+  left: auto;
+  display: block;
+  color: #EE3465;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility .5s, opacity .5s ease;
+}
+
+.search__error_active {
+  visibility: visible;
+  opacity: 1;
+}
+
 .search__input-box {
   display: flex;
   justify-content: flex-end;
@@ -72,6 +88,10 @@
 @media screen and (max-width: 799px) {
   .search {
     padding: 70px 30px 10px;
+  }
+
+  .search__error {
+    top: -25px;
   }
 
   .search__form {

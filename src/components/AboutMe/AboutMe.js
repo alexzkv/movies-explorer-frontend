@@ -1,5 +1,6 @@
 import './AboutMe.css';
-import Photo from '../../images/student.png';
+
+import photo from '../../images/student.png';
 
 export default function AboutMe() {
   return (
@@ -37,7 +38,7 @@ export default function AboutMe() {
             </li>
           </ul>
         </div>
-        <img src={ Photo } alt='фото студента' className='about-me__photo'></img>
+        <img src={photo} alt='фото студента' className='about-me__photo'></img>
       </div>
     </section>
   );

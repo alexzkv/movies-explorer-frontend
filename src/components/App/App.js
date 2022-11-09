@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Main from '../Main/Main';
-import Movies from '../Movies/Movies';
-import NotFound from '../NotFound/NotFound';
-import Profile from '../Profile/Profile';
-import SavedMovies from '../SavedMovies/SavedMovies';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import Main from '../Main/Main';
+import Profile from '../Profile/Profile';
+import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import NotFound from '../NotFound/NotFound';
 
 export default function App() {
   return (
@@ -17,11 +17,15 @@ export default function App() {
       />
       <Route 
         path='/movies'
-        element={ <Movies loggedIn={'loggedIn'} /> }
+        element={ <Movies
+          loggedIn={'loggedIn'}
+        /> }
       />
       <Route 
         path='/saved-movies'
-        element={ <SavedMovies loggedIn={'loggedIn'} /> }
+        element={ <SavedMovies
+          loggedIn={'loggedIn'}
+        /> }
       />
       <Route 
         path='/profile'
@@ -30,17 +34,13 @@ export default function App() {
       <Route 
         path='/signup'
         element={ 
-          <Register 
-            signError={'signError'}
-          /> 
+          <Register /> 
         }
       />
       <Route 
         path='/signin'
         element={ 
-          <Login 
-            signError={'signError'}
-          /> 
+          <Login /> 
         }
       />
       <Route 

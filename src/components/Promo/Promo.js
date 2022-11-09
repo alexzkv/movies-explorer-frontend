@@ -1,5 +1,6 @@
 import './Promo.css';
-import PromoImg from '../../images/ball-web.svg';
+
+import promoImg from '../../images/ball-web.svg';
 
 export default function Promo() {
   return (
@@ -9,7 +10,7 @@ export default function Promo() {
         <p className='promo__subtitle'>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
         <a href='#about' className='promo__link'>Узнать больше</a>
       </div>
-      <img src={PromoImg} alt='шар из слов' className='promo__img' />
+      <img src={promoImg} alt='шар из слов' className='promo__img' />
     </section>
   );
 }

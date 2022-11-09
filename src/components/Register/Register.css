@@ -1,5 +1,9 @@
 .sign {
-  margin: 70px auto;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 70px 0;
+  height: 100%;
   max-width: 396px;
 }
 
@@ -27,6 +31,10 @@
   margin-bottom: 0;
 }
 
+.sign__input:focus {
+  outline: rgba(170, 170, 170, .2) solid;
+}
+
 .sign__error {
   margin-top: 10px;
   font-weight: 400;
@@ -37,16 +45,14 @@
 
 @media screen and (max-width: 799px) {
   .sign {
-    margin: 232px auto;
+    padding: 232px 0;
   }
 }
 
 @media screen and (max-width: 399px) {
   .sign {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    margin: 56px auto 30px;
+    padding: 56px 0 29px;
     max-width: 260px;
   }
 }

@@ -11,8 +11,8 @@ export default function AuthForm({ place, children }) {
 
   return(
     <>
+      <h1 className='form__title'>{title}</h1>
       <form className='form'>
-        <h1 className='form__title'>{title}</h1>
         <fieldset className='form__fieldset'>
           {children}
         </fieldset>

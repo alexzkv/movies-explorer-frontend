@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 
 import './Logo.css';
-import LogoCircle from '../../images/blue-circle.svg';
+
+import logoCircle from '../../images/blue-circle.svg';
 
 export default function Logo() {
   return (
     <Link to='/' className='logo'>
-      <img src={ LogoCircle } alt='синий круг' />
+      <img src={ logoCircle } alt='синий круг' />
     </Link>
   );
 }
