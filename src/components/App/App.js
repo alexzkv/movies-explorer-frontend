@@ -9,6 +9,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import NotFound from '../NotFound/NotFound';
 
 export default function App() {
+
   return (
     <Routes>
       <Route 
@@ -34,13 +35,17 @@ export default function App() {
       <Route 
         path='/signup'
         element={ 
-          <Register /> 
+          <Register 
+            signError={'signError'}
+          /> 
         }
       />
       <Route 
         path='/signin'
         element={ 
-          <Login /> 
+          <Login
+          signError={'signError'}
+          /> 
         }
       />
       <Route 
