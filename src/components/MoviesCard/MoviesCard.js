@@ -11,6 +11,7 @@ export default function MoviesCard({ movie, isSavedMoviesPage, savedMovies }) {
       { !isSavedMoviesPage
         ? <button
             type='button'
+            aria-label='Кнопка "фильм сохранён"'
             className={`card__btn card__btn_type_save ${savedMovie && 'card__btn_type_active'} `}
           >
             {!savedMovie && 'Сохранить'}

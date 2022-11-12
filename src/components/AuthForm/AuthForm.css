@@ -20,7 +20,16 @@
   border: none;
 }
 
-.form__submit {
+.form__status {
+  margin: auto;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.2;
+  text-align: center;
+  color: #EE3465;
+}
+
+.form__submit-button {
   margin-top: auto;
   padding: 14px 0;
   border-radius: 3px;
@@ -34,8 +43,13 @@
   transition: all .5s ease;
 }
 
-.form__submit:hover {
+.form__submit-button:hover {
   opacity: .8;
+}
+
+.form__submit-button:disabled {
+  background-color: #F4F4F4;
+  color: #000;
 }
 
 .form__text {

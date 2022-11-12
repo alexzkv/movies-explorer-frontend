@@ -9,6 +9,7 @@ export default function BurgerMenu({ isVisible, onClose }) {
       <div className='menu'>
         <button
           type='button'
+          aria-label='Кнопка закрытия'
           className='menu__close'
           onClick={onClose} />
         <menu className='menu__list'>

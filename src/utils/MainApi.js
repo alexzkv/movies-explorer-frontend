@@ -1,5 +1,5 @@
  class MainApi {
-  constructor({ baseUrl }) {
+  constructor(baseUrl) {
     this._baseUrl = baseUrl;
   }
 
@@ -14,11 +14,7 @@
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
-      }),
+      body: JSON.stringify({ name, email, password }),
     })
     .then(res => this._checkResponse(res));
   }
@@ -110,9 +106,5 @@
   }
 }
 
-const mainApi = new MainApi({
-  // baseUrl: 'https://bestmovie.nomoredomains.icu'
-  baseUrl: 'https://localhost:3000'
-});
-
-export default mainApi;
+export default new MainApi('http://localhost:3000');
+  // baseUrl: 'https://bestmovie.nomoredomains.icu';
