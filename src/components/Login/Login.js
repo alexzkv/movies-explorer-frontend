@@ -1,28 +1,62 @@
+import { useState } from 'react';
+
 import './Login.css';
 
 import Logo from '../Logo/Logo';
+import Input from '../Input/Input';
 import AuthForm from '../AuthForm/AuthForm';
 
-export default function Login({ signError }) {
+export default function Login({ onLogin, message }) {
+  const [email, setEmail] =useState('');
+  const [password, setPassword] =useState('');
+
+  const [formValidity, setFormValidity] = useState(false);
+  const [emailValidity, setEmailValidity] = useState(true);
+  const [passwordValidity, setPasswordValidity] = useState(true);
+
+  const handleEmailChange = (value) => {
+    setEmail(value);
+  }
+
+  const handlePasswordChange = (value) => {
+    setPassword(value);
+  }
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onLogin({ email, password });
+  }
+
   return(
     <section className='sign'>
       <Logo />
-      <AuthForm place='login'>
+      <AuthForm
+        place='login'
+        onSubmit={handleSubmit}
+        validityState={formValidity}
+        onValidityChange={setFormValidity}
+        message={message}
+      >
         <label className='sign__label'>E-mail</label>
-        <input
-          required
-          type='email'
-          placeholder='E-mail'
-          className='sign__input'
+        <Input
+          inputType='email'
+          inputName='email'
+          inputPlaceholder='E-mail'
+          onChange={handleEmailChange}
+          inputValidityState={emailValidity}
+          onValidityChange={setEmailValidity}
+          inputPattern = '^([^ ]+@[^ ]+\.[a-z]{2,}|)$'
         />
         <label className='sign__label'>Пароль</label>
-        <input
-          required
-          type='password'
-          placeholder='Пароль'
-          className='sign__input'
+        <Input
+          inputType='password'
+          inputName='password'
+          inputPlaceholder='Пароль'
+          // inputMinLength={8}
+          onChange={handlePasswordChange}
+          inputValidityState={passwordValidity}
+          onValidityChange={setPasswordValidity}
         />
-        {!signError && (<p className='sign__error'>Что-то пошло не так...</p>)}
       </AuthForm>
     </section>
   );

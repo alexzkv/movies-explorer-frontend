@@ -2,9 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 246px 70px 60px;
+  height: 394px;
 }
 
 .not-found__code {
+  margin: 0;
   margin-top: 246px;
   font-weight: 400;
   font-size: 140px;

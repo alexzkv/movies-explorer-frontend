@@ -1,8 +1,9 @@
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
@@ -32,50 +33,36 @@ export default function App() {
     return mainApi.login({ email, password })
       .then(() => {
         setLoggedIn(true);
-        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('loggedIn', true);
         navigate('/movies');
       })
-        .then(() => getProfileData())
+        // .then(() => getProfileData())
         .catch(err => setInfoMessage(err));
   }
 
-  const getProfileData = () => {
+  // const getProfileData = () => {
+  //   mainApi.getUserInfo()
+  //     .then(res => setCurrentUser(res))
+  //     .catch(err => setInfoMessage(err));
+  // }
+
+  useEffect(() => {
     mainApi.getUserInfo()
-      .then(res => setCurrentUser(res))
-      .catch(err => setInfoMessage(err));
-  }
+      .then((user) => {
+        setCurrentUser(user.data);
+        setLoggedIn(true);
+        localStorage.setItem('loggedIn', true);
+      })
+      .catch((err) => {
+        console.log(err)
+        setLoggedIn(false);
+        localStorage.removeItem('loggedIn');
+      });
+  }, [])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
-        <Route 
-          path='/'
-          element={ <Main /> }
-        />
-        <Route 
-          path='/movies'
-          element={ 
-            <Movies
-              loggedIn={loggedIn}
-            /> 
-          }
-        />
-        <Route 
-          path='/saved-movies'
-          element={
-            <SavedMovies
-              loggedIn={loggedIn}
-            />
-          }
-        />
-        <Route 
-          path='/profile'
-          element={ 
-            <Profile 
-              loggedIn={loggedIn} 
-            />
-          }
-        />
         <Route 
           path='/signup'
           element={
@@ -89,8 +76,41 @@ export default function App() {
         />
         <Route 
           path='/signin'
+          element={
+            loggedIn
+            ? <Navigate to='/' replace/>
+            : <Login onLogin={handleLogin} /> 
+          }
+        />
+        <Route 
+          path='/profile'
           element={ 
-            <Login /> 
+            <ProtectedRoute
+              component={Profile}
+              loggedIn={loggedIn}
+            />
+          }
+        />
+        <Route 
+          path='/'
+          element={ <Main loggedIn={loggedIn}/> }
+        />
+        <Route 
+          path='/movies'
+          element={ 
+            <ProtectedRoute
+              component={Movies}
+              loggedIn={loggedIn}
+            />
+          }
+        />
+        <Route 
+          path='/saved-movies'
+          element={
+            <ProtectedRoute
+              component={SavedMovies}
+              loggedIn={loggedIn}
+            />
           }
         />
         <Route 

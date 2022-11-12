@@ -5,7 +5,6 @@ import './Register.css';
 import Logo from '../Logo/Logo';
 import Input from '../Input/Input';
 import AuthForm from '../AuthForm/AuthForm';
-// import Preloader from '../Preloader/Preloader';
 
 export default function Register({ onRegister, message }) {
   const [name, setName] = useState('');
@@ -29,8 +28,8 @@ export default function Register({ onRegister, message }) {
     setPassword(value);
   }
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
     onRegister({ 
       name: name,
@@ -50,7 +49,7 @@ export default function Register({ onRegister, message }) {
       >
         <label className='sign__label'>Имя</label>
         <Input
-          name='name'
+          inputName='name'
           inputPlaceholder='Имя'
           inputMinLength={2}
           inputMaxLength={30}
@@ -62,17 +61,17 @@ export default function Register({ onRegister, message }) {
         <label className='sign__label'>E-mail</label>
         <Input
           inputType='email'
-          name='email'
+          inputName='email'
           inputPlaceholder='E-mail'
           onChange={handleEmailChange}
           inputValidityState={emailValidity}
           onValidityChange={setEmailValidity}
-          inputPattern = '^([^ ]+@[^ ]+\.[a-z]{2,6}|)$'
+          inputPattern = '^([^ ]+@[^ ]+\.[a-z]{2,}|)$'
         />
         <label className='sign__label'>Пароль</label>
         <Input
           inputType='password'
-          name='password'
+          inputName='password'
           inputPlaceholder='Пароль'
           // inputMinLength={8}
           onChange={handlePasswordChange}

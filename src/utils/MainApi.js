@@ -26,10 +26,7 @@
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
+      body: JSON.stringify({ email, password }),
     })
     .then(res => this._checkResponse(res));
   }
@@ -46,6 +43,9 @@
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
     })
     .then(res => this._checkResponse(res));
   }
