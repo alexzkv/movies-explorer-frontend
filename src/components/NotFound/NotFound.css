@@ -2,13 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 246px 70px 60px;
-  height: 394px;
 }
 
 .not-found__code {
-  margin: 0;
-  margin-top: 246px;
+  margin: 246px 0 0;
   font-weight: 400;
   font-size: 140px;
   line-height: 1.2;
@@ -21,18 +18,29 @@
   line-height: 1.18;
 }
 
-.not-found__link {
-  margin-top: 185px;
+.not-found__back {
+  margin: 185px 0 60px;
+  border: 0;
   text-decoration: none;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
   color: #3456F3;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.not-found__back:hover {
+  opacity: .7;
 }
 
 @media screen and (max-width: 799px) {
   .not-found__code {
     margin-top: 408px;
+  }
+
+  .not-found__back {
+    margin-bottom: 222px;
   }
 }
 
@@ -49,8 +57,8 @@
     line-height: 1.25;
   }
 
-  .not-found__link {
-    margin-top: 284px;
+  .not-found__back {
+    margin: 284px 0 30px;
     font-size: 12px;
     line-height: 1.25;
   }
