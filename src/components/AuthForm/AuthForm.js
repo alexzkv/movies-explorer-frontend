@@ -32,7 +32,7 @@ export default function AuthForm({
         <fieldset className='form__fieldset'>
           {children}
         </fieldset>
-        {message !== 401 && (<span className='form__status'>{message}</span>)}
+        {message && (<span className='form__status'>{message}</span>)}
         <button
           type='submit'
           className='form__submit-button'

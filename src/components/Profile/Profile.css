@@ -8,7 +8,7 @@
 
 .profile__title {
   margin: 0;
-  margin-bottom: 115px;
+  margin-bottom: 120px;
   font-weight: 500;
   font-size: 24px;
   line-height: 1.2;
@@ -49,7 +49,7 @@
 }
 
 .profile__button {
-  margin-top: 170px;
+  margin-top: auto;
   border: none;
   font-weight: 400;
   font-size: 13px;
@@ -72,7 +72,12 @@
 @media screen and (max-width: 799px) {
   .profile {
     padding: 235px 0 269px;
-    max-width: 350px;
+  }
+
+  @media screen and (max-width: 470px) {
+    .profile {
+      max-width: 350px;
+    }
   }
 
   .profile__title {
@@ -86,12 +91,15 @@
     max-width: 260px;
   }
 
+  .profile__form {
+    min-height: 465px;
+  }
+
   .profile__title {
     margin-bottom: 73px;
   }
 
   .profile__button {
-    margin-top: 330px;
     font-size: 12px;
   }
 

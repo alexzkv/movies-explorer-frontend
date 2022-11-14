@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 
 import './Profile.css';
 
@@ -7,7 +7,7 @@ import Input from '../Input/Input';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
-export default function Profile({ loggedIn, onLogout, onUpdateUser }) {
+export default function Profile({ loggedIn, onLogout, onUpdateUser, message, setIsErrorMessage }) {
   const currentUser = useContext(CurrentUserContext);
 
   const [name, setName] = useState(currentUser.name);
@@ -22,11 +22,16 @@ export default function Profile({ loggedIn, onLogout, onUpdateUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onUpdateUser({ name, email });
+    setIsErrorMessage('');
   }
 
   const handleFormChange = (e) => {
     setFormValidity(e.currentTarget.checkValidity());
   }
+
+  useEffect(() => {
+    setIsErrorMessage('');
+  }, [setIsErrorMessage]);
 
   return (
     <>
@@ -36,6 +41,7 @@ export default function Profile({ loggedIn, onLogout, onUpdateUser }) {
         <form
           noValidate
           className='profile__form'
+          message={message}
           onSubmit={handleSubmit}
           onChange={handleFormChange}
         >
@@ -68,6 +74,7 @@ export default function Profile({ loggedIn, onLogout, onUpdateUser }) {
               inputPattern='^([^ ]+@[^ ]+\.[a-z]{2,}|)$'
             />
           </div>
+          {message && (<span className='form__status'>{message}</span>)}
           <button
             type='submit'
             className='profile__button'

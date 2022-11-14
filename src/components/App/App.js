@@ -28,7 +28,7 @@ export default function App() {
         handleLogin({ email, password });
       })
       .catch(err => {
-        err.status !== 400
+        err !== 400
         ? setIsErrorMessage('Пользователь с таким email уже существует.')
         : setIsErrorMessage('При регистрации пользователя произошла ошибка.');
       });
@@ -66,7 +66,11 @@ export default function App() {
       .then((user) => {
         setCurrentUser(user.data);
       })
-      .catch(err => setIsErrorMessage(err));
+      .catch((err) => {
+        err !== 400
+        ? setIsErrorMessage('Пользователь с таким email уже существует.')
+        : setIsErrorMessage('При обновлении профиля произошла ошибка.');
+      });
   }
 
   useEffect(() => {
@@ -77,7 +81,7 @@ export default function App() {
         localStorage.setItem('loggedIn', true);
       })
       .catch((err) => {
-        setIsErrorMessage(err);
+        console.log(err);
         setLoggedIn(false);
         localStorage.removeItem('loggedIn');
       })
@@ -123,6 +127,8 @@ export default function App() {
               loggedIn={loggedIn}
               onUpdateUser={handleUpdateUser}
               onLogout={handleLogout}
+              message={isErrorMessage}
+              setIsErrorMessage={setIsErrorMessage}
             />
           }
         />
