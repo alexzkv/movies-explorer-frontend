@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './Login.css';
 
@@ -6,7 +6,7 @@ import Logo from '../Logo/Logo';
 import Input from '../Input/Input';
 import AuthForm from '../AuthForm/AuthForm';
 
-export default function Login({ onLogin, message }) {
+export default function Login({ onLogin, message, setIsErrorMessage }) {
   const [email, setEmail] =useState('');
   const [password, setPassword] =useState('');
 
@@ -26,6 +26,10 @@ export default function Login({ onLogin, message }) {
     e.preventDefault();
     onLogin({ email, password });
   }
+
+  useEffect(() => {
+    setIsErrorMessage('');
+  }, [setIsErrorMessage]);
 
   return(
     <section className='sign'>

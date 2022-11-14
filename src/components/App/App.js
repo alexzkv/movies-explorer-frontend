@@ -18,15 +18,20 @@ export default function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [infoMessage, setInfoMessage] = useState('');
+  const [isErrorMessage, setIsErrorMessage] = useState('');
+  const [isReady, setReady] = useState(null);
 
   const handleRegister = ({ name, email, password }) => {
     mainApi.register({ name, email, password })
       .then(() => {
-        setInfoMessage('Вы успешно зарегистрировались!')
-        handleLogin({ email, password })
+        setIsErrorMessage('Вы успешно зарегистрировались!');
+        handleLogin({ email, password });
       })
-      .catch(err => setInfoMessage(err));
+      .catch(err => {
+        err.status !== 400
+        ? setIsErrorMessage('Пользователь с таким email уже существует.')
+        : setIsErrorMessage('При регистрации пользователя произошла ошибка.');
+      });
   }
 
   const handleLogin = ({ email, password }) => {
@@ -37,7 +42,11 @@ export default function App() {
         localStorage.setItem('loggedIn', true);
         navigate('/movies');
       })
-      .catch(err => setInfoMessage(err));
+      .catch(err => {
+        err.includes(401)
+        ? setIsErrorMessage('Вы ввели неправильный логин или пароль.')
+        : setIsErrorMessage('При авторизации произошла ошибка.');
+      });
   }
 
   const handleLogout = () => {
@@ -45,10 +54,11 @@ export default function App() {
       .then(() => {
         setLoggedIn(false);
         setCurrentUser(null);
+        setIsErrorMessage('');
         navigate('/');
         localStorage.clear();
       })
-      .catch(err => console.log(err));
+      .catch(err => setIsErrorMessage(err));
   }
 
   const handleUpdateUser = ({ name, email }) => {
@@ -56,7 +66,7 @@ export default function App() {
       .then((user) => {
         setCurrentUser(user.data);
       })
-      .catch(err => console.log(err))
+      .catch(err => setIsErrorMessage(err));
   }
 
   useEffect(() => {
@@ -67,22 +77,47 @@ export default function App() {
         localStorage.setItem('loggedIn', true);
       })
       .catch((err) => {
-        console.log(err)
+        setIsErrorMessage(err);
         setLoggedIn(false);
         localStorage.removeItem('loggedIn');
-      });
-  }, [])
+      })
+      .finally(() => setReady({}));
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Routes>
+      {isReady && <Routes>
         <Route 
           path='/'
           element={ <Main loggedIn={loggedIn}/> }
         />
         <Route 
+          path='/signup'
+          element={
+            loggedIn 
+            ? <Navigate to='/' replace/> 
+            : <Register 
+                onRegister={handleRegister}
+                message={isErrorMessage}
+                setIsErrorMessage={setIsErrorMessage}
+              />
+          }
+        />
+        <Route
+          path='/signin'
+          element={
+            loggedIn
+            ? <Navigate to='/' replace/>
+            : <Login
+                onLogin={handleLogin}
+                message={isErrorMessage}
+                setIsErrorMessage={setIsErrorMessage}
+              /> 
+          }
+        />
+        <Route 
           path='/profile'
-          element={ 
+          element={
             <ProtectedRoute
               component={Profile}
               loggedIn={loggedIn}
@@ -110,32 +145,10 @@ export default function App() {
           }
         />
         <Route 
-          path='/signup'
-          element={
-            loggedIn 
-            ? <Navigate to='/' replace/> 
-            : <Register 
-                onRegister={handleRegister}
-                message={infoMessage}
-              /> 
-          }
-        />
-        <Route
-          path='/signin'
-          element={
-            loggedIn
-            ? <Navigate to='/' replace/>
-            : <Login
-                onLogin={handleLogin}
-                message={infoMessage}
-              /> 
-          }
-        />
-        <Route 
           path='*'
           element={ <NotFound /> }
         />
-      </Routes>
+      </Routes>}
     </CurrentUserContext.Provider>
   );
 }

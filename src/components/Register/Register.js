@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './Register.css';
 
@@ -6,7 +6,7 @@ import Logo from '../Logo/Logo';
 import Input from '../Input/Input';
 import AuthForm from '../AuthForm/AuthForm';
 
-export default function Register({ onRegister, message }) {
+export default function Register({ onRegister, message, setIsErrorMessage }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,6 +32,10 @@ export default function Register({ onRegister, message }) {
     e.preventDefault();
     onRegister({ name, email, password })
   }
+
+  useEffect(() => {
+    setIsErrorMessage('');
+  }, [setIsErrorMessage]);
 
   return(
     <section className='sign'>
