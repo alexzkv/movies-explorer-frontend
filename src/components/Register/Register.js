@@ -30,11 +30,7 @@ export default function Register({ onRegister, message }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    onRegister({ 
-      name: name,
-      email: email,
-      password: password })
+    onRegister({ name, email, password })
   }
 
   return(
@@ -73,7 +69,7 @@ export default function Register({ onRegister, message }) {
           inputType='password'
           inputName='password'
           inputPlaceholder='Пароль'
-          // inputMinLength={8}
+          inputMinLength={8}
           onChange={handlePasswordChange}
           inputValidityState={passwordValidity}
           onValidityChange={setPasswordValidity}

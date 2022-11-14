@@ -32,7 +32,7 @@
   }
 
   logout() {
-    return fetch(`${this._baseUrl}/users/logout`, {
+    return fetch(`${this._baseUrl}/users/signout`, {
       method: 'DELETE',
       credentials: 'include',
     })
@@ -57,10 +57,7 @@
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-      }),
+      body: JSON.stringify({ name, email }),
     })
     .then(res => this._checkResponse(res));
   }

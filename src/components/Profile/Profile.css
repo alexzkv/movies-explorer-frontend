@@ -2,46 +2,54 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding: 58px 0 70px;
+  padding: 74px 0 70px;
   max-width: 410px;
 }
 
 .profile__title {
-  margin-bottom: 123px;
+  margin: 0;
+  margin-bottom: 115px;
   font-weight: 500;
   font-size: 24px;
   line-height: 1.2;
   text-align: center;
 }
 
-.profile__data {
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  min-height: 298px;
+}
+
+.profile__box {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 16px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-bottom: 17px;
   border-bottom: 1px solid #E8E8E8;
 }
 
-.profile__data:last-of-type {
-  margin-top: 19px;
-  margin-bottom: 220px;
-  padding-bottom: 0;
+.profile__box:last-of-type {
+  margin-bottom: 0;
   border-bottom: none;
 }
 
 .profile__label {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   font-weight: 500;
   font-size: 11px;
   line-height: 1.18;
 }
 
-.profile__value {
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 1.18;
-  text-align: right;
+.profile__label:last-of-type {
+  border: none;
 }
 
-.profile__btn {
+.profile__button {
+  margin-top: 170px;
   border: none;
   font-weight: 400;
   font-size: 13px;
@@ -51,11 +59,11 @@
   transition: all .5s ease;
 }
 
-.profile__btn:hover {
+.profile__button:hover {
   opacity: .7;
 } 
 
-.profile__btn_type_signout {
+.profile__button_type_signout {
   margin-top: 16px;
   font-weight: 500;
   color: #EE3465;
@@ -63,33 +71,31 @@
 
 @media screen and (max-width: 799px) {
   .profile {
-    padding: 220px 0 269px;
+    padding: 235px 0 269px;
+    max-width: 350px;
   }
 
   .profile__title {
-    margin-bottom: 96px;
-  }
-
-  .profile__data:last-of-type {
-    margin-bottom: 210px;
+    margin-bottom: 90px;
   }
 }
 
 @media screen and (max-width: 399px) {
   .profile {
-    padding: 55px 0 40px;
+    padding: 70px 0 40px;
     max-width: 260px;
   }
 
   .profile__title {
-    margin-bottom: 80px;
+    margin-bottom: 73px;
   }
 
-  .profile__data:last-of-type {
-    margin-bottom: 379px;
-  }
-
-  .profile__btn {
+  .profile__button {
+    margin-top: 330px;
     font-size: 12px;
+  }
+
+  .profile__button_type_signout {
+    margin-top: 16px;
   }
 }

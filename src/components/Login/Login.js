@@ -32,10 +32,10 @@ export default function Login({ onLogin, message }) {
       <Logo />
       <AuthForm
         place='login'
+        message={message}
         onSubmit={handleSubmit}
         validityState={formValidity}
         onValidityChange={setFormValidity}
-        message={message}
       >
         <label className='sign__label'>E-mail</label>
         <Input
@@ -45,14 +45,14 @@ export default function Login({ onLogin, message }) {
           onChange={handleEmailChange}
           inputValidityState={emailValidity}
           onValidityChange={setEmailValidity}
-          inputPattern = '^([^ ]+@[^ ]+\.[a-z]{2,}|)$'
+          inputPattern='^([^ ]+@[^ ]+\.[a-z]{2,}|)$'
         />
         <label className='sign__label'>Пароль</label>
         <Input
           inputType='password'
           inputName='password'
           inputPlaceholder='Пароль'
-          // inputMinLength={8}
+          inputMinLength={8}
           onChange={handlePasswordChange}
           inputValidityState={passwordValidity}
           onValidityChange={setPasswordValidity}

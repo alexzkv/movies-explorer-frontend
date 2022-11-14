@@ -10,7 +10,7 @@ export default function AuthForm({
   onValidityChange,
   message
 }) {
-  const title = place === 'register' ? 'Добро пожаловать!' : 'Рады видеть';
+  const title = place === 'register' ? 'Добро пожаловать!' : 'Рады видеть!';
   const signText = place === 'register' ? 'Зарегистрироваться' : 'Войти';
   const text = place === 'register' ? 'Уже зарегистрированы?' : 'Ещё не зарегистрированы?';
   const link = place === 'register' ? '/signin' : '/signup';

@@ -17,11 +17,11 @@ import mainApi from '../../utils/MainApi';
 export default function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
   const [infoMessage, setInfoMessage] = useState('');
 
   const handleRegister = ({ name, email, password }) => {
-    return mainApi.register({ name, email, password })
+    mainApi.register({ name, email, password })
       .then(() => {
         setInfoMessage('Вы успешно зарегистрировались!')
         handleLogin({ email, password })
@@ -30,21 +30,34 @@ export default function App() {
   }
 
   const handleLogin = ({ email, password }) => {
-    return mainApi.login({ email, password })
-      .then(() => {
+    mainApi.login({ email, password })
+      .then((user) => {
         setLoggedIn(true);
+        setCurrentUser(user.data);
         localStorage.setItem('loggedIn', true);
         navigate('/movies');
       })
-        // .then(() => getProfileData())
-        .catch(err => setInfoMessage(err));
+      .catch(err => setInfoMessage(err));
   }
 
-  // const getProfileData = () => {
-  //   mainApi.getUserInfo()
-  //     .then(res => setCurrentUser(res))
-  //     .catch(err => setInfoMessage(err));
-  // }
+  const handleLogout = () => {
+    mainApi.logout()
+      .then(() => {
+        setLoggedIn(false);
+        setCurrentUser(null);
+        navigate('/');
+        localStorage.clear();
+      })
+      .catch(err => console.log(err));
+  }
+
+  const handleUpdateUser = ({ name, email }) => {
+    mainApi.setUserInfo({ name, email })
+      .then((user) => {
+        setCurrentUser(user.data);
+      })
+      .catch(err => console.log(err))
+  }
 
   useEffect(() => {
     mainApi.getUserInfo()
@@ -64,23 +77,8 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
         <Route 
-          path='/signup'
-          element={
-            loggedIn 
-            ? <Navigate to='/' replace/> 
-            : <Register 
-                onRegister={handleRegister}
-                message={infoMessage}
-              /> 
-          }
-        />
-        <Route 
-          path='/signin'
-          element={
-            loggedIn
-            ? <Navigate to='/' replace/>
-            : <Login onLogin={handleLogin} /> 
-          }
+          path='/'
+          element={ <Main loggedIn={loggedIn}/> }
         />
         <Route 
           path='/profile'
@@ -88,12 +86,10 @@ export default function App() {
             <ProtectedRoute
               component={Profile}
               loggedIn={loggedIn}
+              onUpdateUser={handleUpdateUser}
+              onLogout={handleLogout}
             />
           }
-        />
-        <Route 
-          path='/'
-          element={ <Main loggedIn={loggedIn}/> }
         />
         <Route 
           path='/movies'
@@ -111,6 +107,28 @@ export default function App() {
               component={SavedMovies}
               loggedIn={loggedIn}
             />
+          }
+        />
+        <Route 
+          path='/signup'
+          element={
+            loggedIn 
+            ? <Navigate to='/' replace/> 
+            : <Register 
+                onRegister={handleRegister}
+                message={infoMessage}
+              /> 
+          }
+        />
+        <Route
+          path='/signin'
+          element={
+            loggedIn
+            ? <Navigate to='/' replace/>
+            : <Login
+                onLogin={handleLogin}
+                message={infoMessage}
+              /> 
           }
         />
         <Route 
