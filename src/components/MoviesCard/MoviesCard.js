@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './MoviesCard.css';
 
-export default function MoviesCard({ movie, isSavedMoviesPage, savedMovies }) {
+export default function MoviesCard({ movie, isSavedMoviesPage }) {
   const [savedMovie, setSavedMovie] = useState(null);
 
   return (
@@ -11,7 +11,7 @@ export default function MoviesCard({ movie, isSavedMoviesPage, savedMovies }) {
       { !isSavedMoviesPage
         ? <button
             type='button'
-            aria-label='Кнопка "фильм сохранён"'
+            aria-label='Галка, подтверждающая сохранение фильма'
             className={`card__btn card__btn_type_save ${savedMovie && 'card__btn_type_active'} `}
           >
             {!savedMovie && 'Сохранить'}
@@ -19,12 +19,12 @@ export default function MoviesCard({ movie, isSavedMoviesPage, savedMovies }) {
         : <button type='button' className='card__btn card__btn_type_remove' />
       }
       <img 
-        alt='Иллюстрация к фильму'
-        src={movie}
+        alt={movie.nameRU}
+        src={('https://api.nomoreparties.co/' + movie.image.url)}
         className='card__img' />
       <div className='card__box'>
-        <h2 className='card__title'>33 слова о дизайне</h2>
-        <p className='card__duration'>1ч 17м</p>
+        <h2 className='card__title'>{movie.nameRU}</h2>
+        <p className='card__duration'>{movie.duration}</p>
       </div>
     </article>
   );

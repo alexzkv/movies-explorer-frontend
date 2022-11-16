@@ -1,16 +1,14 @@
 import './MoviesCardList.css';
 
 import MoviesCard from '../MoviesCard/MoviesCard';
-import movieImages from '../../utils/MovieImg.js';
 
-export default function MoviesCardList({ place, isSavedMoviesPage }) {
-  const savedMovieImages = [...movieImages];
+export default function MoviesCardList({ place, isSavedMoviesPage, movies }) {
   
   return (
     <>
       {(place === 'movies') && <ul className='movies-list'>
-        {movieImages.map((item, index) => (
-          <li key={index}>
+        {movies.map((item) => (
+          <li key={item.id}>
             <MoviesCard
               movie={item}
               isSavedMoviesPage={isSavedMoviesPage}
@@ -18,7 +16,7 @@ export default function MoviesCardList({ place, isSavedMoviesPage }) {
           </li>
         ))}
       </ul>}
-      {(place === 'saved-movies') && <ul className='movies-list'>
+      {/* {(place === 'saved-movies') && <ul className='movies-list'>
         {savedMovieImages.map((item, index) => (
           <li key={index}>
             <MoviesCard
@@ -27,7 +25,7 @@ export default function MoviesCardList({ place, isSavedMoviesPage }) {
             />
           </li>
         ))}
-      </ul>}
+      </ul>} */}
         {(place !== 'saved-movies') && <div className='movies__more-box'>
           <button type='button' className='movies__more'>Ещё</button>
         </div>}

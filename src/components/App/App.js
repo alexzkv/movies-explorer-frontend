@@ -13,6 +13,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import NotFound from '../NotFound/NotFound';
 
 import mainApi from '../../utils/MainApi';
+import moviesApi from '../../utils/MoviesApi';
 
 export default function App() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isErrorMessage, setIsErrorMessage] = useState('');
   const [isReady, setReady] = useState(null);
+  const [movies, setMovies] = useState([]);
 
   const handleRegister = ({ name, email, password }) => {
     mainApi.register({ name, email, password })
@@ -88,6 +90,16 @@ export default function App() {
       .finally(() => setReady({}));
   }, []);
 
+  useEffect(() => {
+    if (loggedIn) {
+      moviesApi.getMovies()
+        .then((movieData) => {
+          setMovies(movieData);
+        })
+        .catch(err => setIsErrorMessage(err));
+    }
+  }, [loggedIn]);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       {isReady && <Routes>
@@ -138,6 +150,7 @@ export default function App() {
             <ProtectedRoute
               component={Movies}
               loggedIn={loggedIn}
+              movies={movies}
             />
           }
         />

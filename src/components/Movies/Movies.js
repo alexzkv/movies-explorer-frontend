@@ -6,7 +6,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
-export default function Movies({ loggedIn }) {
+export default function Movies({ loggedIn, movies }) {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
@@ -22,6 +22,7 @@ export default function Movies({ loggedIn }) {
           <MoviesCardList
             place='movies'
             isSavedMoviesPage={false}
+            movies={movies}
           />
         } 
       </main>
