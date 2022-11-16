@@ -6,7 +6,11 @@ export default function MoviesCard({ movie, isSavedMoviesPage }) {
   const [savedMovie, setSavedMovie] = useState(null);
 
   return (
-    <article className='card'
+    <a
+      href={movie.trailerLink}
+      target='_blank'
+      rel='noreferrer'
+      className='card'
     >
       { !isSavedMoviesPage
         ? <button
@@ -24,8 +28,10 @@ export default function MoviesCard({ movie, isSavedMoviesPage }) {
         className='card__img' />
       <div className='card__box'>
         <h2 className='card__title'>{movie.nameRU}</h2>
-        <p className='card__duration'>{movie.duration}</p>
+        <p className='card__duration'>
+          {(movie.duration / 60).toString().slice(0, 1)}ч {movie.duration % 60}м
+        </p>
       </div>
-    </article>
+    </a>
   );
 }
