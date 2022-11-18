@@ -32,6 +32,10 @@
   opacity: .8;
 }
 
+.movies__more_type_hidden {
+  display: none;
+}
+
 @media screen and (max-width: 1279px) {
   .movies-list {
     max-width: 1139px;

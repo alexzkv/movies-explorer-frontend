@@ -11,7 +11,7 @@ export default function Movies({ loggedIn, movies }) {
 
   return (
     <>
-      <Header place='movies' loggedIn={loggedIn}/>
+      <Header place='movies' loggedIn={ loggedIn }/>
       <main>
         <SearchForm
           place='movies'
@@ -21,7 +21,6 @@ export default function Movies({ loggedIn, movies }) {
         { !isLoading &&
           <MoviesCardList
             place='movies'
-            isSavedMoviesPage={false}
             movies={movies}
           />
         } 
