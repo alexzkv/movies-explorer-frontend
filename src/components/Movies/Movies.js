@@ -6,12 +6,12 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
-export default function Movies({ loggedIn, movies }) {
+export default function Movies({ loggedIn, movies, savedMovies, onSave, onDelete }) {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
     <>
-      <Header place='movies' loggedIn={ loggedIn }/>
+      <Header place='movies' loggedIn={loggedIn}/>
       <main>
         <SearchForm
           place='movies'
@@ -22,6 +22,9 @@ export default function Movies({ loggedIn, movies }) {
           <MoviesCardList
             place='movies'
             movies={movies}
+            savedMovies={savedMovies}
+            onSave={onSave}
+            onDelete={onDelete}
           />
         } 
       </main>

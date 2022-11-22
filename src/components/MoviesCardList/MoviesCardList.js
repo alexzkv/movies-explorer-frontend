@@ -4,19 +4,19 @@ import './MoviesCardList.css';
 
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-export default function MoviesCardList({ place, movies }) {
+export default function MoviesCardList({ place, movies, savedMovies, onSave, onDelete }) {
   const [shownMovies, setShownMovies] = useState(0);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [showMoreMovies, setShowMoreMovies] = useState(0);
 
-  const handleAddVisibleMovies = () => {
-    setShownMovies((movies) => movies + showMoreMovies);
-  };
+  const handleAddShownMovies = () => {
+    setShownMovies(movies => movies + showMoreMovies);
+  }
 
   useEffect(() => {
     const handleChangeWidth = () => {
       setScreenWidth(window.innerWidth);
-    };
+    }
 
     if (screenWidth <= 480) {
       setShownMovies(5);
@@ -42,41 +42,34 @@ export default function MoviesCardList({ place, movies }) {
 
     return () => {
       window.removeEventListener('resize', handleChangeWidth);
-    };
+    }
   }, [screenWidth]);
 
   return (
     <>
-      {(place === 'movies') && <ul className='movies-list' onSchowMovies={handleAddVisibleMovies} >
+      {<ul className='movies-list'>
         {movies.slice(0, shownMovies).map((movie) => (
-          <li key={movie.id}>
-            <MoviesCard
-              movie={movie}
-            />
-          </li>
+          <MoviesCard
+            key={movie.id || movie._id}
+            place={place}
+            movie={movie}
+            savedMovies={savedMovies}
+            onSave={onSave}
+            onDelete={onDelete}
+          />
         ))}
       </ul>}
-      {/* {(place === 'saved-movies') && <ul className='movies-list'>
-        {savedMovieImages.map((item, index) => (
-          <li key={index}>
-            <MoviesCard
-              movie={item}
-              isSavedMoviesPage={isSavedMoviesPage}
-            />
-          </li>
-        ))}
-      </ul>} */}
-        {(place !== 'saved-movies') && <div className='movies__more-box'>
-          <button
-            type='button'
-            className={
-              shownMovies >= movies.length 
-              ? 'movies__more_type_hidden'
-              : 'movies__more'
-            }
-            onClick={handleAddVisibleMovies}
-          >Ещё</button>
-        </div>}
+      {<div className='movies__more-box'>
+        <button
+          type='button'
+          className={
+            shownMovies >= movies.length 
+            ? 'movies__more_type_hidden'
+            : 'movies__more'
+          }
+          onClick={handleAddShownMovies}
+        >Ещё</button>
+      </div>}
     </>
   );
 }

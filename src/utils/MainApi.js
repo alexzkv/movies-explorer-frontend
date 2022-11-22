@@ -41,11 +41,7 @@
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: 'GET',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
     })
     .then(res => this._checkResponse(res));
   }
@@ -64,13 +60,12 @@
 
   getSavedMovies() {
     return fetch(`${this._baseUrl}/movies`, {
-      method: 'GET',
       credentials: 'include',
     })
     .then(res => this._checkResponse(res));
   }
 
-  addMovie(data) {
+  saveMovie(data) {
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       credentials: 'include',
@@ -78,24 +73,14 @@
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        country: data.country,
-        director: data.director,
-        duration: data.duration,
-        year: data.year,
-        description: data.description,
-        image: data.image,
-        trailer: data.trailer,
-        thumbnail: data.thumbnail,
-        movieId: data.movieId,
-        nameRU: data.nameRU,
-        nameEN: data.nameEN,
+        ...data,
       })
     })
     .then(res => this._checkResponse(res));
   }
 
-  deleteSavedMovie(id) {
-    return fetch(`${this._baseUrl}/movies/${id}`, {
+  deleteMovie(_id) {
+    return fetch(`${this._baseUrl}/movies/${_id}`, {
       method: 'DELETE',
       credentials: 'include',
     })

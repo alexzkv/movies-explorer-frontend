@@ -3,7 +3,7 @@ import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-export default function SavedMovies({ loggedIn }) {
+export default function SavedMovies({ loggedIn, savedMovies, onDelete }) {
   return (
     <>
       <Header place='saved-movies' loggedIn={loggedIn}/>
@@ -11,7 +11,8 @@ export default function SavedMovies({ loggedIn }) {
         <SearchForm place='saved-movies' />
         <MoviesCardList
           place='saved-movies'
-          isSavedMoviesPage={true}
+          onDelete={onDelete}
+          movies={savedMovies}
         />
       </main>
       <Footer />

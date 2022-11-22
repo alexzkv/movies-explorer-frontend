@@ -17,18 +17,50 @@ import moviesApi from '../../utils/MoviesApi';
 
 export default function App() {
   const navigate = useNavigate();
+  
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [isErrorMessage, setIsErrorMessage] = useState('');
   const [isReady, setReady] = useState(null);
+
   const [movies, setMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
+
+  const [isErrorMessage, setIsErrorMessage] = useState('');
+
+  useEffect(() => {
+    mainApi.getUserInfo()
+      .then((user) => {
+        setCurrentUser(user.data);
+        setLoggedIn(true);
+        localStorage.setItem('loggedIn', true);
+      })
+      .catch((err) => {
+        setIsErrorMessage(err);
+        setLoggedIn(false);
+        localStorage.removeItem('loggedIn');
+      })
+      .finally(() => setReady({}));
+  }, []);
+
+  useEffect(() => {
+    if (loggedIn) {
+      moviesApi.getMovies()
+        .then(movie => setMovies(movie))
+        .catch(err => console.log(err));
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    if (loggedIn) {
+      mainApi.getSavedMovies()
+        .then(movie => setSavedMovies(movie.data))
+        .catch(err => console.log(err));
+    }
+  }, [loggedIn]);
 
   const handleRegister = ({ name, email, password }) => {
     mainApi.register({ name, email, password })
-      .then(() => {
-        setIsErrorMessage('Вы успешно зарегистрировались!');
-        handleLogin({ email, password });
-      })
+      .then(() => handleLogin({ email, password }))
       .catch(err => {
         err !== 400
         ? setIsErrorMessage('Пользователь с таким email уже существует.')
@@ -65,9 +97,7 @@ export default function App() {
 
   const handleUpdateUser = ({ name, email }) => {
     mainApi.setUserInfo({ name, email })
-      .then((user) => {
-        setCurrentUser(user.data);
-      })
+      .then(user => setCurrentUser(user.data))
       .catch((err) => {
         err !== 400
         ? setIsErrorMessage('Пользователь с таким email уже существует.')
@@ -75,30 +105,21 @@ export default function App() {
       });
   }
 
-  useEffect(() => {
-    mainApi.getUserInfo()
-      .then((user) => {
-        setCurrentUser(user.data);
-        setLoggedIn(true);
-        localStorage.setItem('loggedIn', true);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoggedIn(false);
-        localStorage.removeItem('loggedIn');
-      })
-      .finally(() => setReady({}));
-  }, []);
+  const handleSaveMovie = (data) => {
+    mainApi.saveMovie(data)
+      .then(res => setSavedMovies([...savedMovies, res.data]))
+      .catch(err => console.log(err));
+  }
 
-  useEffect(() => {
-    if (loggedIn) {
-      moviesApi.getMovies()
-        .then((movieData) => {
-          setMovies(movieData);
+  const handleDeleteMovie = (id) => {
+    mainApi.deleteMovie(id)
+      .then((res) => {
+        setSavedMovies((state) => {
+          return state.filter(item => item._id !== res.data._id);
         })
-        .catch(err => setIsErrorMessage(err));
-    }
-  }, [loggedIn]);
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -151,6 +172,9 @@ export default function App() {
               component={Movies}
               loggedIn={loggedIn}
               movies={movies}
+              savedMovies={savedMovies}
+              onSave={handleSaveMovie}
+              onDelete={handleDeleteMovie}
             />
           }
         />
@@ -160,6 +184,8 @@ export default function App() {
             <ProtectedRoute
               component={SavedMovies}
               loggedIn={loggedIn}
+              savedMovies={savedMovies}
+              onDelete={handleDeleteMovie}
             />
           }
         />

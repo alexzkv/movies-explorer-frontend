@@ -1,25 +1,68 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './MoviesCard.css';
 
-export default function MoviesCard({ movie, isSavedMoviesPage }) {
-  const [savedMovie, setSavedMovie] = useState(null);
+export default function MoviesCard({ place, movie, savedMovies, onSave, onDelete }) {
+  const [isSaved, setIsSaved] = useState(false);
+
+  const hours = (movie.duration / 60).toString().slice(0, 1);
+  const minutes = (movie.duration % 60);
+  const url = 'https://api.nomoreparties.co/';
+  const buttonClassName = isSaved ? 'card__btn card__btn_type_active' : 'card__btn card__btn_type_save';
+
+  useEffect (() => {
+    if(place !== 'saved-movies') {
+      setIsSaved(savedMovies.some(item => item.movieId === movie.id));
+    }    
+  }, [place, savedMovies, movie.id]);
+
+  const handleSave = () => {
+    const movieInfo = {
+      country: movie.country || 'unknown',
+      director: movie.director || 'unknown',
+      duration: movie.duration,
+      year: movie.year || 'unknown',
+      description: movie.description || 'unknown',
+      image: url + movie.image.url,
+      trailerLink: movie.trailerLink,
+      nameRU: movie.nameRU || 'unknown',
+      nameEN: movie.nameEN || 'unknown',
+      thumbnail: url + movie.image.formats.thumbnail.url,
+      movieId: movie.id,
+    }
+    onSave(movieInfo, setIsSaved);
+  }
+
+  const handleDelete = () => {
+    onDelete(movie._id);
+  }
+
+  const handleClick = () => {
+    isSaved
+    ? handleDelete()
+    : handleSave()
+  }
 
   return (
     <article className='card'>
-      { !isSavedMoviesPage
-        ? <button
-            type='button'
-            aria-label='Галка, подтверждающая сохранение фильма'
-            className={`card__btn card__btn_type_save ${savedMovie && 'card__btn_type_active'} `}
-            onClick={() => {
-              setSavedMovie(movie);
-            }}
-          >
-            {!savedMovie && 'Сохранить'}
-          </button>
-        : <button type='button' className='card__btn card__btn_type_remove' />
-      }
+      {(place === 'movies') && (
+        <button
+          type='button'
+          aria-label='Кнопка фильм сохранён'
+          className={buttonClassName}
+          onClick={handleClick}
+        >
+          {!isSaved && 'Сохранить'}
+        </button>
+      )}
+      {(place === 'saved-movies') && (
+        <button
+          type='button'
+          aria-label='Кнопка удаления'
+          className='card__btn card__btn_type_remove'
+          onClick={handleDelete}
+        />
+      )}
       <a
         href={movie.trailerLink}
         target='_blank'
@@ -28,13 +71,11 @@ export default function MoviesCard({ movie, isSavedMoviesPage }) {
       >
         <img 
           alt={movie.nameRU}
-          src={('https://api.nomoreparties.co/' + movie.image.url)}
+          src={place === 'saved-movies' ? movie.image : url + movie.image.url}
           className='card__img' />
         <div className='card__box'>
           <h2 className='card__title'>{movie.nameRU}</h2>
-          <p className='card__duration'>
-            {(movie.duration / 60).toString().slice(0, 1)}ч {movie.duration % 60}м
-          </p>
+          <p className='card__duration'>{hours}ч {minutes}м</p>
         </div>
       </a>
     </article>
