@@ -13,7 +13,6 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import NotFound from '../NotFound/NotFound';
 
 import mainApi from '../../utils/MainApi';
-import moviesApi from '../../utils/MoviesApi';
 
 export default function App() {
   const navigate = useNavigate();
@@ -21,10 +20,7 @@ export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [isReady, setReady] = useState(null);
-
-  const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
-
   const [isErrorMessage, setIsErrorMessage] = useState('');
 
   useEffect(() => {
@@ -44,14 +40,6 @@ export default function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      moviesApi.getMovies()
-        .then(movie => setMovies(movie))
-        .catch(err => console.log(err));
-    }
-  }, [loggedIn]);
-
-  useEffect(() => {
-    if (loggedIn) {
       mainApi.getSavedMovies()
         .then(movie => setSavedMovies(movie.data))
         .catch(err => console.log(err));
@@ -61,7 +49,7 @@ export default function App() {
   const handleRegister = ({ name, email, password }) => {
     mainApi.register({ name, email, password })
       .then(() => handleLogin({ email, password }))
-      .catch(err => {
+      .catch((err) => {
         err !== 400
         ? setIsErrorMessage('Пользователь с таким email уже существует.')
         : setIsErrorMessage('При регистрации пользователя произошла ошибка.');
@@ -171,10 +159,11 @@ export default function App() {
             <ProtectedRoute
               component={Movies}
               loggedIn={loggedIn}
-              movies={movies}
               savedMovies={savedMovies}
               onSave={handleSaveMovie}
               onDelete={handleDeleteMovie}
+              isErrorMessage={isErrorMessage}
+              setIsErrorMessage={setIsErrorMessage}
             />
           }
         />
@@ -186,6 +175,8 @@ export default function App() {
               loggedIn={loggedIn}
               savedMovies={savedMovies}
               onDelete={handleDeleteMovie}
+              isErrorMessage={isErrorMessage}
+              setIsErrorMessage={setIsErrorMessage}
             />
           }
         />
