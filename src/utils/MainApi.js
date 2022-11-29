@@ -1,3 +1,5 @@
+import { MAIN_API_URL } from './utils'; 
+
  class MainApi {
   constructor(baseUrl) {
     this._baseUrl = baseUrl;
@@ -88,5 +90,4 @@
   }
 }
 
-export default new MainApi('http://localhost:3000');
-  // baseUrl: 'https://bestmovie.nomoredomains.icu';
+export default new MainApi(MAIN_API_URL);

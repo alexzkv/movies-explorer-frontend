@@ -1,3 +1,5 @@
+import { MOVIES_API_URL } from './utils';
+
 class MoviesApi {
   constructor(baseUrl) {
     this._baseUrl = baseUrl;
@@ -18,4 +20,4 @@ class MoviesApi {
   }
 }
 
-export default new MoviesApi('https://api.nomoreparties.co/beatfilm-movies');
+export default new MoviesApi(MOVIES_API_URL);
