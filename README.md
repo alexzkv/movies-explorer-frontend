@@ -2,6 +2,8 @@
 
 Репозиторий для приложения проекта `Movies Explorer`, включающий фронтенд со следующими возможностями: авторизации и регистрации пользователей, операции с фильмами и пользователями.
 
-**[Ссылка на макет проекта в Figma](https://disk.yandex.ru/d/lw0o2fzaTPWMCQ)**
+# **[Ссылка на проект Movies Explorer](https://bestmovie.nomoredomains.icu/)**
 
 **[Ссылка на pull request](https://github.com/alexzkv/movies-explorer-frontend/pull/10)**
+
+**[Ссылка на макет проекта в Figma](https://disk.yandex.ru/d/lw0o2fzaTPWMCQ)**
