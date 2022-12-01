@@ -1,4 +1,4 @@
-import { MAIN_API_URL } from './utils'; 
+import { MAIN_API_URL, HEADERS } from './constants'; 
 
  class MainApi {
   constructor(baseUrl) {
@@ -13,9 +13,7 @@ import { MAIN_API_URL } from './utils';
     return fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: HEADERS,
       body: JSON.stringify({ name, email, password }),
     })
     .then(res => this._checkResponse(res));
@@ -25,9 +23,7 @@ import { MAIN_API_URL } from './utils';
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: HEADERS,
       body: JSON.stringify({ email, password }),
     })
     .then(res => this._checkResponse(res));
@@ -52,9 +48,7 @@ import { MAIN_API_URL } from './utils';
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: HEADERS,
       body: JSON.stringify({ name, email }),
     })
     .then(res => this._checkResponse(res));
@@ -71,9 +65,7 @@ import { MAIN_API_URL } from './utils';
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: HEADERS,
       body: JSON.stringify({
         ...data,
       })

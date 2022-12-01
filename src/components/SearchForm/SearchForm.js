@@ -4,6 +4,9 @@ import './SearchForm.css';
 
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
+import { MESSAGE_KEYWORD } from '../../utils/erorrs';
+import { SET_TIMEOUT_ERROR } from '../../utils/constants';
+
 export default function SearchForm({ place, showMovies, onSearch }) {
   const [search, setSearch] = useState('');
   const [isСheckbox, setIsСheckbox] = useState(false);
@@ -14,10 +17,10 @@ export default function SearchForm({ place, showMovies, onSearch }) {
   const handleSearch = (e) => {
     e.preventDefault();
     if (!search) {
-      setSearchError('Нужно ввести ключевое слово.');
+      setSearchError(MESSAGE_KEYWORD);
       setTimeout(() => {
         setSearchError('');
-      }, 3000);
+      }, SET_TIMEOUT_ERROR);
     } else
     onSearch(search, isСheckbox);
   }

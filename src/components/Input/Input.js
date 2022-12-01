@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import './Input.css';
 
+import { MESSAGE_NOT_CHANGED, MESSAGE_CONTENT, MESSAGE_INCORRECT_DATA } from '../../utils/erorrs';
+
 export default function Input({
     inputType = 'text',
     inputPattern = null,
@@ -22,18 +24,18 @@ export default function Input({
     e.target.setCustomValidity('');
 
     if (e.target.value === inputDefaultValue) {
-      e.target.setCustomValidity('Данные не были изменены');
+      e.target.setCustomValidity(MESSAGE_NOT_CHANGED);
       onValidityChange(false);
-      setErrorText('Данные не были изменены');
+      setErrorText(MESSAGE_NOT_CHANGED);
     }
 
     if (e.target.name === 'name') {
       let err = e.target.validity.patternMismatch;
       onValidityChange(!err);
       if (err) {
-        e.target.setCustomValidity('Поле может содержать только латиницу, кириллицу, пробел или дефис');
+        e.target.setCustomValidity(MESSAGE_CONTENT);
         onValidityChange(false);
-        setErrorText('Поле может содержать только латиницу, кириллицу, пробел или дефис');
+        setErrorText(MESSAGE_CONTENT);
       }
     }
 
@@ -41,7 +43,7 @@ export default function Input({
       let err = e.target.validity.patternMismatch;
       onValidityChange(!err);
       if (err) {
-        e.target.setCustomValidity('Некорректные данные');
+        e.target.setCustomValidity(MESSAGE_INCORRECT_DATA);
         setErrorText(e.target.validationMessage);
       }
     }

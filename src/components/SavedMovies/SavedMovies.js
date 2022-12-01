@@ -7,6 +7,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
 import { filterSavedMovies } from '../../utils/utils';
+import { MESSAGE_NOT_FOUND } from '../../utils/erorrs';
 
 export default function SavedMovies({
   loggedIn, savedMovies, onDelete,
@@ -21,7 +22,7 @@ export default function SavedMovies({
     const serchedMovies = filterSavedMovies(savedMovies);
     if (serchedMovies.length === 0) {
       setIsSearching(false);
-      setIsErrorMessage('Ничего не найдено.');
+      setIsErrorMessage(MESSAGE_NOT_FOUND);
     } else {
       setIsSearching(true);
       setIsSavedMovies(serchedMovies);

@@ -1,0 +1,41 @@
+const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
+// const MAIN_API_URL = 'https://api.bestmovie.nomoredomains.icu';
+
+const MAIN_API_URL = 'http://localhost:3000';
+const HEADERS = { 'Content-Type': 'application/json' };
+
+const SHORT_DURATION = 40;
+const TIME_DURATION = 60;
+const LARGE_SCREEN_SIZE = 1280;
+const MEDIUM_SCREEN_SIZE = 768;
+const SMALL_SCREEN_SIZE = 480;
+const CARDS_FOR_LARGE_SIZE = 12;
+const CARDS_FOR_MEDIUM_SIZE = 8;
+const CARDS_FOR_SMALL_SIZE = 5;
+const CARDS_ADD_LARGE = 3;
+const CARDS_ADD_MEDIUM = 2;
+
+const ERROR_CODE_BAD_REQUEST = 400;
+const ERROR_CODE_UNAUTHORIZED = 401;
+
+const SET_TIMEOUT_ERROR = 3000;
+
+
+export { 
+  MOVIES_API_URL,
+  MAIN_API_URL,
+  HEADERS,
+  SHORT_DURATION,
+  TIME_DURATION,
+  LARGE_SCREEN_SIZE,
+  MEDIUM_SCREEN_SIZE,
+  SMALL_SCREEN_SIZE,
+  CARDS_FOR_LARGE_SIZE,
+  CARDS_FOR_MEDIUM_SIZE,
+  CARDS_FOR_SMALL_SIZE,
+  CARDS_ADD_LARGE,
+  CARDS_ADD_MEDIUM,
+  ERROR_CODE_BAD_REQUEST,
+  ERROR_CODE_UNAUTHORIZED,
+  SET_TIMEOUT_ERROR,
+};

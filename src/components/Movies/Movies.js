@@ -8,6 +8,7 @@ import Preloader from '../Preloader/Preloader';
 
 import moviesApi from '../../utils/MoviesApi';
 import { filterMovies } from '../../utils/utils';
+import { MESSAGE_NOT_FOUND, MESSAGE_REQUEST_ERROR } from '../../utils/erorrs';
 
 export default function Movies({ 
   loggedIn, savedMovies, onSave, onDelete,
@@ -23,7 +24,7 @@ export default function Movies({
     const serchedMovies = filterMovies();
     if (serchedMovies.length === 0) {
       setIsSearching(false);
-      setIsErrorMessage('Ничего не найдено.');
+      setIsErrorMessage(MESSAGE_NOT_FOUND);
     } else {
       setIsSearching(true);
       setMovies(serchedMovies);
@@ -41,11 +42,7 @@ export default function Movies({
           localStorage.setItem('searchMoviesResult', JSON.stringify(res));
           showMovies();
         })  
-        .catch(() => {
-          setIsErrorMessage(
-            'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.'
-          );
-        })
+        .catch(() => setIsErrorMessage(MESSAGE_REQUEST_ERROR))
         .finally(() => setIsLoading(false));
     } else showMovies();
   }

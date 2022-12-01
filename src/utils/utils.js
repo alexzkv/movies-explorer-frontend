@@ -1,5 +1,4 @@
-const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
-const MAIN_API_URL = 'https://api.bestmovie.nomoredomains.icu';
+import { SHORT_DURATION } from './constants';
 
 const filterMovies = () => {
   const searchMoviesResult = JSON.parse(localStorage.searchMoviesResult);
@@ -10,7 +9,7 @@ const filterMovies = () => {
   );
   
   if (shortMovieFilter && shortMovieFilter.toString() === 'true') {
-    return searchedMovies.filter(item => item.duration < 40);
+    return searchedMovies.filter(item => item.duration < SHORT_DURATION);
   }
 
   return searchedMovies;
@@ -24,7 +23,7 @@ const filterSavedMovies = (savedMovies) => {
   );
 
   if (shortMovieFilter && shortMovieFilter.toString() === 'true') {
-    return searchedMovies.filter(item => item.duration < 40);
+    return searchedMovies.filter(item => item.duration < SHORT_DURATION);
   }
 
   return searchedMovies;
@@ -33,6 +32,4 @@ const filterSavedMovies = (savedMovies) => {
 export {
   filterMovies,
   filterSavedMovies,
-  MOVIES_API_URL,
-  MAIN_API_URL,
 }

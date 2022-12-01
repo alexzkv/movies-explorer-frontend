@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 
 import './MoviesCard.css';
 
+import { TIME_DURATION } from '../../utils/constants';
+
 export default function MoviesCard({ place, movie, savedMovies, onSave, onDelete }) {
   const [isSaved, setIsSaved] = useState(false);
 
-  const hours = (movie.duration / 60).toString().slice(0, 1);
-  const minutes = (movie.duration % 60);
+  const hours = (movie.duration / TIME_DURATION).toString().slice(0, 1);
+  const minutes = (movie.duration % TIME_DURATION);
   const url = 'https://api.nomoreparties.co/';
   const buttonClassName = isSaved ? 'card__btn card__btn_type_active' : 'card__btn card__btn_type_save';
 

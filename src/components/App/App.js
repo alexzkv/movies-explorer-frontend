@@ -14,6 +14,15 @@ import NotFound from '../NotFound/NotFound';
 
 import mainApi from '../../utils/MainApi';
 
+import { ERROR_CODE_BAD_REQUEST, ERROR_CODE_UNAUTHORIZED} from '../../utils/constants';
+import {
+  ERROR_MESSAGE_EMAIL,
+  ERROR_MESSAGE_REGISTRATION,
+  ERROR_MESSAGE_INVALID,
+  ERROR_MESSAGE_AUTHORIZATION,
+  ERROR_MESSAGE_UPDATING_PROFILE,
+} from '../../utils/erorrs';
+
 export default function App() {
   const navigate = useNavigate();
   
@@ -50,9 +59,9 @@ export default function App() {
     mainApi.register({ name, email, password })
       .then(() => handleLogin({ email, password }))
       .catch((err) => {
-        err !== 400
-        ? setIsErrorMessage('Пользователь с таким email уже существует.')
-        : setIsErrorMessage('При регистрации пользователя произошла ошибка.');
+        err !== ERROR_CODE_BAD_REQUEST
+        ? setIsErrorMessage(ERROR_MESSAGE_EMAIL)
+        : setIsErrorMessage(ERROR_MESSAGE_REGISTRATION);
       });
   }
 
@@ -65,9 +74,9 @@ export default function App() {
         navigate('/movies');
       })
       .catch(err => {
-        err.includes(401)
-        ? setIsErrorMessage('Вы ввели неправильный логин или пароль.')
-        : setIsErrorMessage('При авторизации произошла ошибка.');
+        err.includes(ERROR_CODE_UNAUTHORIZED)
+        ? setIsErrorMessage(ERROR_MESSAGE_INVALID)
+        : setIsErrorMessage(ERROR_MESSAGE_AUTHORIZATION);
       });
   }
 
@@ -87,9 +96,9 @@ export default function App() {
     mainApi.setUserInfo({ name, email })
       .then(user => setCurrentUser(user.data))
       .catch((err) => {
-        err !== 400
-        ? setIsErrorMessage('Пользователь с таким email уже существует.')
-        : setIsErrorMessage('При обновлении профиля произошла ошибка.');
+        err !== ERROR_CODE_BAD_REQUEST
+        ? setIsErrorMessage(ERROR_MESSAGE_EMAIL)
+        : setIsErrorMessage(ERROR_MESSAGE_UPDATING_PROFILE);
       });
   }
 

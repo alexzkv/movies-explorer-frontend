@@ -1,4 +1,14 @@
 import { useState, useEffect } from'react';
+import {
+  LARGE_SCREEN_SIZE,
+  MEDIUM_SCREEN_SIZE,
+  SMALL_SCREEN_SIZE,
+  CARDS_FOR_LARGE_SIZE,
+  CARDS_FOR_MEDIUM_SIZE,
+  CARDS_FOR_SMALL_SIZE,
+  CARDS_ADD_LARGE,
+  CARDS_ADD_MEDIUM,
+} from '../../utils/constants';
 
 import './MoviesCardList.css';
 
@@ -18,24 +28,24 @@ export default function MoviesCardList({ place, movies, savedMovies, onSave, onD
       setScreenWidth(window.innerWidth);
     }
 
-    if (screenWidth <= 480) {
-      setShownMovies(5);
-      setShowMoreMovies(5);
+    if (screenWidth <= SMALL_SCREEN_SIZE) {
+      setShownMovies(CARDS_FOR_SMALL_SIZE);
+      setShowMoreMovies(CARDS_FOR_SMALL_SIZE);
     } else if (
-      screenWidth <= 768 &&
-      screenWidth > 480
+      screenWidth <= MEDIUM_SCREEN_SIZE &&
+      screenWidth > SMALL_SCREEN_SIZE
     ) {
-      setShownMovies(8);
-      setShowMoreMovies(2);
+      setShownMovies(CARDS_FOR_MEDIUM_SIZE);
+      setShowMoreMovies(CARDS_ADD_MEDIUM);
     } else if (
-      screenWidth <= 1280 &&
-      screenWidth > 768
+      screenWidth <= LARGE_SCREEN_SIZE &&
+      screenWidth > MEDIUM_SCREEN_SIZE
     ) {
-      setShownMovies(12);
-      setShowMoreMovies(3);
+      setShownMovies(CARDS_FOR_LARGE_SIZE);
+      setShowMoreMovies(CARDS_ADD_LARGE);
     } else {
-      setShownMovies(12);
-      setShowMoreMovies(3);
+      setShownMovies(CARDS_FOR_LARGE_SIZE);
+      setShowMoreMovies(CARDS_ADD_LARGE);
     }
 
     window.addEventListener('resize', handleChangeWidth);

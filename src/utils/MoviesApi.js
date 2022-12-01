@@ -1,4 +1,4 @@
-import { MOVIES_API_URL } from './utils';
+import { MOVIES_API_URL, HEADERS } from './constants';
 
 class MoviesApi {
   constructor(baseUrl) {
@@ -12,9 +12,7 @@ class MoviesApi {
   getMovies() {
     return fetch(this._baseUrl, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: HEADERS,
     })
     .then(res => this._checkResponse(res));
   }
