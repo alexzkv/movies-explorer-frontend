@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './Input.css';
 
-import { MESSAGE_NOT_CHANGED, MESSAGE_CONTENT, MESSAGE_INCORRECT_DATA } from '../../utils/erorrs';
+import { MESSAGE_NOT_CHANGED, MESSAGE_CONTENT, MESSAGE_INCORRECT_DATA } from '../../utils/constants';
 
 export default function Input({
     inputType = 'text',

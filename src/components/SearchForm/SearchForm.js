@@ -4,8 +4,7 @@ import './SearchForm.css';
 
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
-import { MESSAGE_KEYWORD } from '../../utils/erorrs';
-import { SET_TIMEOUT_ERROR } from '../../utils/constants';
+import { SET_TIMEOUT_ERROR, MESSAGE_KEYWORD } from '../../utils/constants';
 
 export default function SearchForm({ place, showMovies, onSearch }) {
   const [search, setSearch] = useState('');

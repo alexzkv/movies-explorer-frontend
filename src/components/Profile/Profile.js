@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 
 import './Profile.css';
 
@@ -7,7 +7,7 @@ import Input from '../Input/Input';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
-export default function Profile({ loggedIn, onLogout, onUpdateUser, message, setIsErrorMessage }) {
+export default function Profile({ loggedIn, onLogout, onUpdateUser, isMessageSuccess, setIsMessageSuccess }) {
   const currentUser = useContext(CurrentUserContext);
 
   const [name, setName] = useState(currentUser.name);
@@ -17,21 +17,18 @@ export default function Profile({ loggedIn, onLogout, onUpdateUser, message, set
   const [nameValidity, setNameValidity] = useState(true);
   const [emailValidity, setEmailValidity] = useState(true);
 
+  // const [isChanged, setIsChanged] = useState(false);
+
   const isSubmitDisabled = (name !== currentUser.name || email !== currentUser.email) && (emailValidity || nameValidity);
   
   const handleSubmit = (e) => {
     e.preventDefault();
     onUpdateUser({ name, email });
-    setIsErrorMessage('');
   }
 
   const handleFormChange = (e) => {
     setFormValidity(e.currentTarget.checkValidity());
   }
-
-  useEffect(() => {
-    setIsErrorMessage('');
-  }, [setIsErrorMessage]);
 
   return (
     <>
@@ -41,7 +38,6 @@ export default function Profile({ loggedIn, onLogout, onUpdateUser, message, set
         <form
           noValidate
           className='profile__form'
-          message={message}
           onSubmit={handleSubmit}
           onChange={handleFormChange}
         >
@@ -74,7 +70,7 @@ export default function Profile({ loggedIn, onLogout, onUpdateUser, message, set
               inputPattern='^([^ ]+@[^ ]+\.[a-z]{2,}|)$'
             />
           </div>
-          {message && (<span className='form__status'>{message}</span>)}
+          {isMessageSuccess && (<p className='profile__status'>{isMessageSuccess}</p>)}
           <button
             type='submit'
             className='profile__button'

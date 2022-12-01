@@ -8,7 +8,7 @@ import Preloader from '../Preloader/Preloader';
 
 import moviesApi from '../../utils/MoviesApi';
 import { filterMovies } from '../../utils/utils';
-import { MESSAGE_NOT_FOUND, MESSAGE_REQUEST_ERROR } from '../../utils/erorrs';
+import { MESSAGE_NOT_FOUND, MESSAGE_REQUEST_ERROR } from '../../utils/constants';
 
 export default function Movies({ 
   loggedIn, savedMovies, onSave,
@@ -64,7 +64,7 @@ export default function Movies({
           onSearch={handleSearch}
           showMovies={showMovies}
         />
-        {isLoading 
+        {isLoading
           ? ( <Preloader /> )
           : isSearching
           ? (<MoviesCardList
@@ -76,7 +76,7 @@ export default function Movies({
           : ( isErrorMessage && (
               <p className='search__not-found'>{isErrorMessage}</p>
             ))
-        } 
+        }
       </main>
       <Footer />
     </>

@@ -69,6 +69,14 @@
   color: #EE3465;
 }
 
+.profile__status {
+  margin-top: 50px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
 @media screen and (max-width: 799px) {
   .profile {
     padding: 235px 0 269px;

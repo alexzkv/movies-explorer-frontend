@@ -14,14 +14,17 @@ import NotFound from '../NotFound/NotFound';
 
 import mainApi from '../../utils/MainApi';
 
-import { ERROR_CODE_BAD_REQUEST, ERROR_CODE_UNAUTHORIZED} from '../../utils/constants';
 import {
+  ERROR_CODE_BAD_REQUEST,
+  ERROR_CODE_UNAUTHORIZED,
+  SET_TIMEOUT_ERROR,
   ERROR_MESSAGE_EMAIL,
   ERROR_MESSAGE_REGISTRATION,
   ERROR_MESSAGE_INVALID,
   ERROR_MESSAGE_AUTHORIZATION,
   ERROR_MESSAGE_UPDATING_PROFILE,
-} from '../../utils/erorrs';
+  MESSAGE_SUCCESS,
+} from '../../utils/constants';
 
 export default function App() {
   const navigate = useNavigate();
@@ -31,6 +34,7 @@ export default function App() {
   const [isReady, setReady] = useState(null);
   const [savedMovies, setSavedMovies] = useState([]);
   const [isErrorMessage, setIsErrorMessage] = useState('');
+  const [isMessageSuccess, setIsMessageSuccess] = useState('');
 
   useEffect(() => {
     mainApi.getUserInfo()
@@ -95,6 +99,12 @@ export default function App() {
   const handleUpdateUser = ({ name, email }) => {
     mainApi.setUserInfo({ name, email })
       .then(user => setCurrentUser(user.data))
+      .then(() => {
+        setIsMessageSuccess(MESSAGE_SUCCESS);
+        setTimeout(() => {
+          setIsMessageSuccess('');
+        }, SET_TIMEOUT_ERROR);
+      })
       .catch((err) => {
         err !== ERROR_CODE_BAD_REQUEST
         ? setIsErrorMessage(ERROR_MESSAGE_EMAIL)
@@ -157,8 +167,8 @@ export default function App() {
               loggedIn={loggedIn}
               onUpdateUser={handleUpdateUser}
               onLogout={handleLogout}
-              message={isErrorMessage}
-              setIsErrorMessage={setIsErrorMessage}
+              isMessageSuccess={isMessageSuccess}
+              setIsMessageSuccess={setIsMessageSuccess}
             />
           }
         />

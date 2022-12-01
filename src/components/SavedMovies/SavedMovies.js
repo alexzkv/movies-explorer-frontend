@@ -7,7 +7,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
 import { filterSavedMovies } from '../../utils/utils';
-import { MESSAGE_NOT_FOUND } from '../../utils/erorrs';
+import { MESSAGE_NOT_FOUND } from '../../utils/constants';
 
 export default function SavedMovies({
   loggedIn, savedMovies, onDelete,
