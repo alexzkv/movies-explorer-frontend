@@ -36,7 +36,9 @@ export default function MoviesCard({ place, movie, savedMovies, onSave, onDelete
   }
 
   const handleDelete = () => {
-    onDelete(movie._id);
+    if (place === 'saved-movies') {
+      onDelete(movie._id);
+    }
   }
 
   const handleClick = () => {
@@ -47,24 +49,22 @@ export default function MoviesCard({ place, movie, savedMovies, onSave, onDelete
 
   return (
     <article className='card'>
-      {(place === 'movies') && (
-        <button
-          type='button'
-          aria-label='Кнопка фильм сохранён'
-          className={buttonClassName}
-          onClick={handleClick}
-        >
+      {(place === 'movies')
+      ? (<button
+            type='button'
+            aria-label='Кнопка фильм сохранён'
+            className={buttonClassName}
+            onClick={handleClick}
+          >
           {!isSaved && 'Сохранить'}
-        </button>
-      )}
-      {(place === 'saved-movies') && (
-        <button
+        </button>)
+      : (<button
           type='button'
           aria-label='Кнопка удаления'
           className='card__btn card__btn_type_remove'
           onClick={handleDelete}
-        />
-      )}
+        />)
+      }
       <a
         href={movie.trailerLink}
         target='_blank'

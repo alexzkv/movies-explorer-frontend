@@ -170,7 +170,6 @@ export default function App() {
               loggedIn={loggedIn}
               savedMovies={savedMovies}
               onSave={handleSaveMovie}
-              onDelete={handleDeleteMovie}
               isErrorMessage={isErrorMessage}
               setIsErrorMessage={setIsErrorMessage}
             />

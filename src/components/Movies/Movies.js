@@ -11,7 +11,7 @@ import { filterMovies } from '../../utils/utils';
 import { MESSAGE_NOT_FOUND, MESSAGE_REQUEST_ERROR } from '../../utils/erorrs';
 
 export default function Movies({ 
-  loggedIn, savedMovies, onSave, onDelete,
+  loggedIn, savedMovies, onSave,
   isErrorMessage, setIsErrorMessage,
 }) {
 
@@ -72,7 +72,6 @@ export default function Movies({
               movies={movies}
               savedMovies={savedMovies}
               onSave={onSave}
-              onDelete={onDelete}
             />)
           : ( isErrorMessage && (
               <p className='search__not-found'>{isErrorMessage}</p>
