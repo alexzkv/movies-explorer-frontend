@@ -97,8 +97,16 @@
 }
 
 @media screen and (max-width: 899px) {
-  .card:hover .card__btn {
-    transform: translate(253px, 14px);
+  .card__btn {
+    margin: 14px 0 0 253px;
+  }
+
+  .card__btn_type_active {
+    margin: 14px 0 0 304px;
+  }
+  
+  .card__btn_type_remove {
+    margin: 14px 0 0 304px;
   }
 }
 
@@ -116,7 +124,15 @@
     line-height: 1.25;
   }
 
-  .card:hover .card__btn {
-    transform: translate(218px, 10px);
+  .card__btn {
+    margin: 10px 0 0 218px;
+  }
+
+  .card__btn_type_active {
+    margin: 10px 0 0 269px;
+  }
+  
+  .card__btn_type_remove {
+    margin: 10px 0 0 269px;
   }
 }
