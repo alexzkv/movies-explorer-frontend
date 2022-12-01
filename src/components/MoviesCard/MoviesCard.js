@@ -10,7 +10,7 @@ export default function MoviesCard({ place, movie, savedMovies, onSave, onDelete
   const hours = (movie.duration / TIME_DURATION).toString().slice(0, 1);
   const minutes = (movie.duration % TIME_DURATION);
   const url = 'https://api.nomoreparties.co/';
-  const buttonClassName = isSaved ? 'card__btn card__btn_type_active' : 'card__btn card__btn_type_save';
+  const buttonClassName = isSaved ? 'card__btn card__btn_type_active' : 'card__btn';
 
   useEffect (() => {
     if(place !== 'saved-movies') {

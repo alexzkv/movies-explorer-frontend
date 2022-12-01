@@ -4,12 +4,6 @@
   cursor: pointer;
 }
 
-.card:hover .card__btn {
-  visibility: visible;
-  transition: .5s;
-  transform: translate(274px, 14px);
-}
-
 .card:hover {
   transform: scale(1.1);
   opacity: 1;
@@ -25,9 +19,7 @@
 
 .card__btn {
   position: absolute;
-  display: flex;
-  align-items: center;
-  text-align: center;
+  margin: 14px 0 0 274px;
   padding: 6px 7px;
   width: 72px;
   border-radius: 30px;
@@ -37,7 +29,6 @@
   line-height: .9;
   background-color: #F4F4F4;
   color: #000;
-  visibility: hidden;
   cursor: pointer;
 }
 
@@ -45,19 +36,15 @@
   opacity: .8;
 }
 
-.card__btn_type_save {
-  background: #F4F4F4;
-}
-
 .card__btn_type_active {
-  margin-left: 51px;
+  margin: 14px 0 0 325px;
   height: 21px;
   width: 21px;
   background: #EE3465 no-repeat center url(../../images/save-btn.svg);
 }
 
 .card__btn_type_remove {
-  margin-left: 51px;
+  margin: 14px 0 0 325px;
   height: 21px;
   width: 21px;
   background: #F4F4F4 no-repeat center url(../../images/cross-btn.svg);
