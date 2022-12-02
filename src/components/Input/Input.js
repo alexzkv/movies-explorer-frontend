@@ -17,6 +17,7 @@ export default function Input({
     onChange,
     onValidityChange,
     place,
+    disabled,
 }) {
   const [errorText, setErrorText] = useState('');
 
@@ -87,6 +88,7 @@ export default function Input({
         placeholder={inputPlaceholder}
         onChange={handleInputChange}
         pattern={inputPattern}
+        disabled={disabled}
       />
       {!inputValidityState && (
         <p className='input__error'>{errorText}</p>

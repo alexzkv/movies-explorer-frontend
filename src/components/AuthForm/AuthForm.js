@@ -8,7 +8,8 @@ export default function AuthForm({
   onSubmit,
   validityState,
   onValidityChange,
-  message
+  message,
+  isLoading,
 }) {
   const title = place === 'register' ? 'Добро пожаловать!' : 'Рады видеть!';
   const signText = place === 'register' ? 'Зарегистрироваться' : 'Войти';
@@ -37,7 +38,7 @@ export default function AuthForm({
           type='submit'
           className='form__submit-button'
           onSubmit={onSubmit}
-          disabled={!validityState}
+          disabled={!validityState || isLoading}
         >
           {signText}
         </button>

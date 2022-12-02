@@ -7,7 +7,7 @@ import Input from '../Input/Input';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
-export default function Profile({ loggedIn, onLogout, onUpdateUser, isMessageSuccess, setIsMessageSuccess }) {
+export default function Profile({ loggedIn, onLogout, onUpdateUser, isMessageSuccess, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
 
   const [name, setName] = useState(currentUser.name);
@@ -17,9 +17,9 @@ export default function Profile({ loggedIn, onLogout, onUpdateUser, isMessageSuc
   const [nameValidity, setNameValidity] = useState(true);
   const [emailValidity, setEmailValidity] = useState(true);
 
-  // const [isChanged, setIsChanged] = useState(false);
-
-  const isSubmitDisabled = (name !== currentUser.name || email !== currentUser.email) && (emailValidity || nameValidity);
+  const isSubmitDisabled = (
+    name !== currentUser.name || email !== currentUser.email) && (emailValidity || nameValidity || isLoading
+  );
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,6 +54,7 @@ export default function Profile({ loggedIn, onLogout, onUpdateUser, isMessageSuc
               onValidityChange={setNameValidity}
               inputValidityState={nameValidity}
               inputPattern='^[a-zA-Zа-яА-Я0-9\s-]+$'
+              disabled={isLoading}
             />
           </div>
           <div className='profile__box'>
@@ -68,6 +69,7 @@ export default function Profile({ loggedIn, onLogout, onUpdateUser, isMessageSuc
               onValidityChange={setEmailValidity}
               inputValidityState={emailValidity}
               inputPattern='^([^ ]+@[^ ]+\.[a-z]{2,}|)$'
+              disabled={isLoading}
             />
           </div>
           {isMessageSuccess && (<p className='profile__status'>{isMessageSuccess}</p>)}

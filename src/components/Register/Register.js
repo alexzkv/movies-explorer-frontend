@@ -6,7 +6,7 @@ import Logo from '../Logo/Logo';
 import Input from '../Input/Input';
 import AuthForm from '../AuthForm/AuthForm';
 
-export default function Register({ onRegister, message, setIsErrorMessage }) {
+export default function Register({ onRegister, message, setIsErrorMessage, isLoading }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,6 +46,7 @@ export default function Register({ onRegister, message, setIsErrorMessage }) {
         validityState={formValidity}
         onValidityChange={setFormValidity}
         message={message}
+        isLoading={isLoading}
       >
         <label className='sign__label'>Имя</label>
         <Input
@@ -57,6 +58,7 @@ export default function Register({ onRegister, message, setIsErrorMessage }) {
           inputValidityState={nameValidity}
           onValidityChange={setNameValidity}
           inputPattern='^[a-zA-Zа-яА-Я0-9\s-]+$'
+          disabled={isLoading}
         />
         <label className='sign__label'>E-mail</label>
         <Input
@@ -66,7 +68,8 @@ export default function Register({ onRegister, message, setIsErrorMessage }) {
           onChange={handleEmailChange}
           inputValidityState={emailValidity}
           onValidityChange={setEmailValidity}
-          inputPattern = '^([^ ]+@[^ ]+\.[a-z]{2,}|)$'
+          inputPattern='^([^ ]+@[^ ]+\.[a-z]{2,}|)$'
+          disabled={isLoading}
         />
         <label className='sign__label'>Пароль</label>
         <Input
@@ -77,6 +80,7 @@ export default function Register({ onRegister, message, setIsErrorMessage }) {
           onChange={handlePasswordChange}
           inputValidityState={passwordValidity}
           onValidityChange={setPasswordValidity}
+          disabled={isLoading}
         />
       </AuthForm>
     </section>

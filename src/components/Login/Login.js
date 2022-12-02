@@ -6,7 +6,7 @@ import Logo from '../Logo/Logo';
 import Input from '../Input/Input';
 import AuthForm from '../AuthForm/AuthForm';
 
-export default function Login({ onLogin, message, setIsErrorMessage }) {
+export default function Login({ onLogin, message, setIsErrorMessage, isLoading }) {
   const [email, setEmail] =useState('');
   const [password, setPassword] =useState('');
 
@@ -37,6 +37,7 @@ export default function Login({ onLogin, message, setIsErrorMessage }) {
       <AuthForm
         place='login'
         message={message}
+        isLoading={isLoading}
         onSubmit={handleSubmit}
         validityState={formValidity}
         onValidityChange={setFormValidity}
@@ -50,6 +51,7 @@ export default function Login({ onLogin, message, setIsErrorMessage }) {
           inputValidityState={emailValidity}
           onValidityChange={setEmailValidity}
           inputPattern='^([^ ]+@[^ ]+\.[a-z]{2,}|)$'
+          disabled={isLoading}
         />
         <label className='sign__label'>Пароль</label>
         <Input
@@ -60,6 +62,7 @@ export default function Login({ onLogin, message, setIsErrorMessage }) {
           onChange={handlePasswordChange}
           inputValidityState={passwordValidity}
           onValidityChange={setPasswordValidity}
+          disabled={isLoading}
         />
       </AuthForm>
     </section>

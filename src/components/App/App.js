@@ -35,6 +35,7 @@ export default function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [isErrorMessage, setIsErrorMessage] = useState('');
   const [isMessageSuccess, setIsMessageSuccess] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     mainApi.getUserInfo()
@@ -60,16 +61,22 @@ export default function App() {
   }, [loggedIn]);
 
   const handleRegister = ({ name, email, password }) => {
+    setIsLoading(true);
     mainApi.register({ name, email, password })
       .then(() => handleLogin({ email, password }))
       .catch((err) => {
         err !== ERROR_CODE_BAD_REQUEST
         ? setIsErrorMessage(ERROR_MESSAGE_EMAIL)
         : setIsErrorMessage(ERROR_MESSAGE_REGISTRATION);
-      });
+        setTimeout(() => {
+          setIsErrorMessage('');
+        }, SET_TIMEOUT_ERROR);
+      })
+      .finally(() => setIsLoading(false));
   }
 
   const handleLogin = ({ email, password }) => {
+    setIsLoading(true);
     mainApi.login({ email, password })
       .then((user) => {
         setLoggedIn(true);
@@ -81,7 +88,11 @@ export default function App() {
         err.includes(ERROR_CODE_UNAUTHORIZED)
         ? setIsErrorMessage(ERROR_MESSAGE_INVALID)
         : setIsErrorMessage(ERROR_MESSAGE_AUTHORIZATION);
-      });
+        setTimeout(() => {
+          setIsErrorMessage('');
+        }, SET_TIMEOUT_ERROR);
+      })
+      .finally(() => setIsLoading(false));
   }
 
   const handleLogout = () => {
@@ -97,6 +108,7 @@ export default function App() {
   }
 
   const handleUpdateUser = ({ name, email }) => {
+    setIsLoading(true);
     mainApi.setUserInfo({ name, email })
       .then(user => setCurrentUser(user.data))
       .then(() => {
@@ -109,7 +121,8 @@ export default function App() {
         err !== ERROR_CODE_BAD_REQUEST
         ? setIsErrorMessage(ERROR_MESSAGE_EMAIL)
         : setIsErrorMessage(ERROR_MESSAGE_UPDATING_PROFILE);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }
 
   const handleSaveMovie = (data) => {
@@ -140,7 +153,8 @@ export default function App() {
           element={
             loggedIn 
             ? <Navigate to='/' replace/> 
-            : <Register 
+            : <Register
+                isLoading={isLoading}
                 onRegister={handleRegister}
                 message={isErrorMessage}
                 setIsErrorMessage={setIsErrorMessage}
@@ -153,6 +167,7 @@ export default function App() {
             loggedIn
             ? <Navigate to='/' replace/>
             : <Login
+                isLoading={isLoading}
                 onLogin={handleLogin}
                 message={isErrorMessage}
                 setIsErrorMessage={setIsErrorMessage}
@@ -165,6 +180,7 @@ export default function App() {
             <ProtectedRoute
               component={Profile}
               loggedIn={loggedIn}
+              isLoading={isLoading}
               onUpdateUser={handleUpdateUser}
               onLogout={handleLogout}
               isMessageSuccess={isMessageSuccess}
