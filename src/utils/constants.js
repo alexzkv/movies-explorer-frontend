@@ -1,7 +1,6 @@
 const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
-// const MAIN_API_URL = 'https://api.bestmovie.nomoredomains.icu';
+const MAIN_API_URL = 'https://api.bestmovie.nomoredomains.icu';
 
-const MAIN_API_URL = 'http://localhost:3000';
 const HEADERS = { 'Content-Type': 'application/json' };
 
 const SHORT_DURATION = 40;
