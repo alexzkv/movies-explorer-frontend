@@ -1,0 +1,42 @@
+.input {
+  margin-bottom: 22px;
+  padding: 15px 0 15px 15px;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.23;
+  background-color: #F4F4F4;
+  outline: none;
+}
+
+.input:focus {
+  outline: rgba(170, 170, 170, .2) solid;
+}
+
+.input_invalid {
+  margin-bottom: 10px;
+}
+
+.input_profile {
+  max-width: 360px;
+  padding: 6px 0;
+  text-align: right;
+  font-size: 11px;
+  line-height: 1.18;
+  background-color: transparent;
+}
+
+.input__error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #EE3465;
+}
+
+@media screen and (max-width: 399px) {
+  .input_profile {
+    max-width: 210px;
+  }
+}

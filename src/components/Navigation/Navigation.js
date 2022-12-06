@@ -4,7 +4,7 @@ import './Navigation.css';
 
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-export default function Navigation({ place, isMenuOpen, onMenuOpen, onMenuClose }) {
+export default function Navigation({ isMenuOpen, onMenuOpen, onMenuClose }) {
   return (
     <>
       <nav className='navigation'>
