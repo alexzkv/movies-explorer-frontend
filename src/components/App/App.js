@@ -136,7 +136,7 @@ export default function App() {
       .then((res) => {
         setSavedMovies((state) => {
           return state.filter(item => item._id !== res.data._id);
-        })
+        });
       })
       .catch((err) => console.log(err));
   }
@@ -184,7 +184,6 @@ export default function App() {
               onUpdateUser={handleUpdateUser}
               onLogout={handleLogout}
               isMessageSuccess={isMessageSuccess}
-              setIsMessageSuccess={setIsMessageSuccess}
             />
           }
         />

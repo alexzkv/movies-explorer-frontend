@@ -7,8 +7,8 @@ import Input from '../Input/Input';
 import AuthForm from '../AuthForm/AuthForm';
 
 export default function Login({ onLogin, message, setIsErrorMessage, isLoading }) {
-  const [email, setEmail] =useState('');
-  const [password, setPassword] =useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const [formValidity, setFormValidity] = useState(false);
   const [emailValidity, setEmailValidity] = useState(true);
